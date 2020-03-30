@@ -111,8 +111,8 @@ button:visited{
 .order-button{
 
   float: right;
-  font-size: 1.2em;
-  margin-top: 2em;
+  font-size: 1em;
+  margin-top: 1em;
   margin-right: 2em;  
 
 }
@@ -202,10 +202,11 @@ a:visited{
 #topbar{
   width: 100%;
   position: fixed;
+  justify-content: center;
 }
 
 #splash{
-  margin-top: 10em; 
+  margin-top: 7em; 
   text-align: center;
   align-items: center;
   align-content: center;
