@@ -46,6 +46,31 @@ p{
   margin-top: 0;
 }
 
+#jap-banner{
+  margin: 0;
+  border: 0;
+  padding:0;
+  position: absolute;
+  top: 20%;
+  left: 20%; 
+  transform: rotate(-40deg);
+
+  /* Safari */
+  -webkit-transform: rotate(-40deg);
+
+  /* Firefox */
+  -moz-transform: rotate(-40deg);
+
+  /* IE */
+  -ms-transform: rotate(-40deg);
+
+  /* Opera */
+  -o-transform: rotate(-40deg);
+
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
 #gotcha{
   color: #4E1111;
 }
@@ -157,10 +182,14 @@ a:visited{
   color: #000000;
 }
 
+.socmed{
+  width: 2em;
+}
+
 #stage-cards{
   display: inline-block;
   margin-top: 2em;
-  width: 70vw;
+  width: 75vw;
   background: #E4DCD4;
   box-shadow: 9px 9px 16px #C9B9AA, -9px -9px 16px #EFEAE5;
   border-radius: 10px;
@@ -171,7 +200,7 @@ a:visited{
 
 .card{
   display:inline-block;
-  width: 65vw;
+  width: 70vw;
   height: 3em;
   border-radius: 10px;
   justify-content: center;
@@ -235,5 +264,5 @@ a:visited{
   padding-bottom: 2em;
   border-radius: 10px;
   display: inline-block;
-  width: 70vw;
+  width: 75vw;
 }
