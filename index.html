@@ -1,0 +1,441 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title> 寺岡 | Teraoka Farms </title>
+        <meta name="description" content="Teraoka farms - soft ui v1">
+        <meta name="author" content="Sophia Therese Rivera">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Muli|Rubik&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <div id="topbar">
+            <!-- <img src="images/logo.png" alt="" id="logo"> -->
+            <a href="#splash">
+                    <img src="images/logo.png" alt="" id="logo">
+            </a>
+            <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
+                    <button class="element order-button" type="button">🛒 Order</button>
+            </a>
+        </div>
+        <br>
+        
+        <div id="splash">
+            <h1>Need veggies?</h1>
+            <h1 id="gotcha">We gotcha!</h1>
+
+            <a href="#howto">
+                <button class="element" id="howto-button" type="button" style="margin-top: 1em;">How do I order?</button>
+            </a>
+            <a href="#produce">
+                <button class="element" id="howto-button" type="button" style="margin-top: 1em;"> Check produce</button>
+            </a>
+            <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
+                <button class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
+            </a>
+        </div>
+
+        <div class="section" id="produce">
+            <!-- create a filter and cards, but display: none only -->
+            <h2>Take a look at our produce</h2>
+            <p>(Prices are subjected to change without prior notice)</p>
+            <button id="all" class="element tab" type="button">🥗 All</button>
+            <button id="leafy-greens" class="element tab" type="button">🥬 Leafy Greens</button>
+            <button id="fruiting-crops" class="element tab" type="button">🌱 Fruiting Crops</button>
+            <button id="fruits" class="element tab" type="button">🍓 Fruits</button>
+            <button id="root-crops" class="element tab" type="button">🥔 Root Crops</button>
+
+            <script>
+                document.getElementById("all").onclick = tab_click; 
+                document.getElementById("leafy-greens").onclick = tab_click; 
+                document.getElementById('fruits').onclick = tab_click; 
+                document.getElementById('fruiting-crops').onclick = tab_click; 
+                document.getElementById('root-crops').onclick = tab_click; 
+    
+                function tab_click(clicked) { 
+    
+                    console.log(this.id);
+                    const produce = ['leafy-greens', 'fruits', 'fruiting-crops', 'root-crops'];
+                    
+                    if (this.id != 'all'){
+                        console.log(produce);
+        
+                        const index = produce.indexOf(this.id);
+                        if (index > -1) 
+                            produce.splice(index, 1);
+                        
+        
+                        console.log(produce);
+        
+                        //clicked button's id should be removed from "produce" already
+        
+                        // other buttons are hidden
+                        for(i=0; i<produce.length; i++){
+                            var cards = document.getElementsByClassName(produce[i]);
+                            var cnt;
+                            for (cnt = 0; cnt < cards.length; cnt++) {
+                                cards[cnt].style.display = "none";
+                            }
+        
+                        }
+        
+                        //clicked button's id is reset
+                        var x = document.getElementsByClassName(this.id);
+                        var i;
+                        for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "inline-block";
+                        }
+                    
+                    }else{
+                        console.log('it is all')
+                        var x = document.getElementsByClassName('card');
+                        var i;
+                        for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "inline-block";
+                        }
+                    }
+
+                    // Get all elements with class="tablinks" and remove the class "active"
+                    tablinks = document.getElementsByClassName("tab");
+                    for (i = 0; i < tablinks.length; i++) {
+                        console.log(tablinks[i].id + " " + tablinks[i].classname);
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                        console.log(tablinks[i].id + " " + tablinks[i].classname);
+                    }
+
+                    // Show the current tab, and add an "active" class to the button that opened the tab
+                    
+                    event.currentTarget.className += " active";
+                    
+                }  
+    
+            </script>
+
+            <br>
+            <div class="element bulge" id="stage-cards">
+
+<!-- LEAFY GREENS -->
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Alugbati</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Cabbage Green</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Camote Tops</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Celery</p>
+                    <p class="prod-price">P200/kg</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Curly Kale</p>
+                    <p class="prod-price">P100/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Green Ice Lettuce</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Kangkong</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Lollo Rossa Lettuce</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Onion Leeks</p>
+                    <p class="prod-price">P70/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Purple Cabbage</p>
+                    <p class="prod-price">P350/kg</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Romaine Lettuce</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Saluyot</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Sayote Tops</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Spring Onion</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Squash Tops</p>
+                    <p class="prod-price">P50/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Tuscan Kale</p>
+                    <p class="prod-price">P100/pack</p> 
+                </div>
+
+                <div class="card depress leafy-greens">
+                    <p class="prod-name">Wild Arugula</p>
+                    <p class="prod-price">P120/pack</p> 
+                </div>
+
+<!-- FRUITING CROPS -->
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Ampalaya</p>
+                    <p class="prod-price">P140/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Assorted Cherry Tomatoes</p>
+                    <p class="prod-price">P180/pack</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Broccoli</p>
+                    <p class="prod-price">P250/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Cauliflower</p>
+                    <p class="prod-price">P250/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Chayote</p>
+                    <p class="prod-price">P70/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Cherry Tomatoes</p>
+                    <p class="prod-price">P120/pack</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Chicharo</p>
+                    <p class="prod-price">P350/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Eggplant Regular</p>
+                    <p class="prod-price">P100/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Fairytale Eggplant</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">French Beans</p>
+                    <p class="prod-price">P250/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Native Tomato L</p>
+                    <p class="prod-price">P100/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Native Tomato S/M</p>
+                    <p class="prod-price">P80/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Patola</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Regular Cucumbers</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Sigarilyas</p>
+                    <p class="prod-price">P250/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Sweet Corn</p>
+                    <p class="prod-price">P110/kg</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">Upo</p>
+                    <p class="prod-price">P50/pc</p> 
+                </div>
+
+                <div class="card depress fruiting-crops">
+                    <p class="prod-name">White Corn</p>
+                    <p class="prod-price">P110/kg</p> 
+                </div>
+
+<!-- FRUITS -->
+                <div class="card depress fruits">
+                    <p class="prod-name">Banana Lakatan</p>
+                    <p class="prod-price">P100/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Banana Latundan</p>
+                    <p class="prod-price">P80/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Guyabano</p>
+                    <p class="prod-price">P150/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Honeydew</p>
+                    <p class="prod-price">P150kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Lemon</p>
+                    <p class="prod-price">P200/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Mango</p>
+                    <p class="prod-price">P200/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Melon</p>
+                    <p class="prod-price">P100/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Native Lime</p>
+                    <p class="prod-price">P200/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Red Lady Papaya</p>
+                    <p class="prod-price">P80/kg</p> 
+                </div>
+
+                <div class="card depress fruits">
+                    <p class="prod-name">Strawberries</p>
+                    <p class="prod-price">P150/pack</p> 
+                </div>
+
+<!-- ROOT CROPS -->
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Beetroot</p>
+                    <p class="prod-price">P200/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Carrots</p>
+                    <p class="prod-price">P180/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Ginger</p>
+                    <p class="prod-price">P280/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Marbled Potato</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Mini Squash</p>
+                    <p class="prod-price">P60/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Native Squash</p>
+                    <p class="prod-price">P80/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Potato</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Red Radish</p>
+                    <p class="prod-price">P350/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Singkamas</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Sweet Potato Orange</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Sweet Potato Purple</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">Turmeric</p>
+                    <p class="prod-price">P160/kg</p> 
+                </div>
+
+                <div class="card depress root-crops">
+                    <p class="prod-name">White Radish</p>
+                    <p class="prod-price">P120/kg</p> 
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div class="section" id="howto">
+            <h2> How do I order?</h2>
+            <div class="depress" id="guide">
+                <p>
+                    1. Click the button and fill out the form:
+                </p>
+                <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
+                    <button class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
+                </a>
+                <br>
+                <br>
+                <p>
+                    2. A text will be sent by our team to finalize your order and amount due.
+                    <br><br>
+                    3. Pay via online bank transfer through BPI or BDO
+                    <br><br>
+                    4. For payment made by 12pm on the day, we will dispatch your order on the next day
+                </p>
+            </div>
+        </div>
+        
+    </body>
+</html>
