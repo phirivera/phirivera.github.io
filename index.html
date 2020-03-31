@@ -25,7 +25,7 @@
         
         <p id="jap-banner">こんにちは~</p>
 
-        <div id="splash">
+        <div class="section" id="splash">
             
             <h1>Need veggies?</h1>
             <h1 id="gotcha">We gotcha!</h1>
@@ -55,8 +55,9 @@
             </a>
         </div>
 
+        <!-- <div class="parallax" id="farm"></div> -->
+
         <div class="section" id="produce">
-            <!-- create a filter and cards, but display: none only -->
             <h2>Take a look at our produce</h2>
             <p>(Prices are subjected to change without prior notice)</p>
             <div class="element bulge outer-button">
@@ -95,18 +96,13 @@
     
                 function tab_click(clicked) { 
     
-                    console.log(this.id);
                     const produce = ['leafy-greens', 'fruits', 'fruiting-crops', 'root-crops'];
                     
                     if (this.id != 'all'){
-                        console.log(produce);
         
                         const index = produce.indexOf(this.id);
                         if (index > -1) 
                             produce.splice(index, 1);
-                        
-        
-                        console.log(produce);
         
                         //clicked button's id should be removed from "produce" already
         
@@ -136,7 +132,7 @@
                         }
                     }
 
-                    // Get all elements with class="tablinks" and remove the class "active"
+                    // Get all elements with class="tab" and remove the class "active"
                     tablinks = document.getElementsByClassName("tab");
                     for (i = 0; i < tablinks.length; i++) {
                         console.log(tablinks[i].id + " " + tablinks[i].classname);
@@ -456,7 +452,7 @@
         
         <div class="section" id="howto">
             <h2> How do I order?</h2>
-            <div class="depress" id="guide">
+            <div class="depress guide">
                 <p>
                     1. Click the button and fill out the form:
                 </p>
@@ -474,6 +470,67 @@
                 </p>
             </div>
         </div>
-        
+
+        <div class="section" id="about">
+
+            <h2>About Us</h2>
+
+            <div class="about-card">
+                <div class="element bulge" id="outer-pic">
+                    <div class="element depress" id="inner-pic">
+                        <img src="images/farm.jpg" alt="" class="pic">
+                    </div>
+                </div>
+                <div class="depress guide about-content">
+                    <p>
+                        In 1991, trenches of land were acquired in Mangaterem, Pangasinan. The land includes a hill which overlooks the the great plains that surround it. The family built a vacation house to enjoy life's simple pleasures - a laid back life with a scenic provincial view different to that of Baguio City, where they are from.
+    
+                        A plantation of 4000 mango trees were lined which added beautiful greenery and poultry livestock came about.
+                    </p>
+                    
+                </div>
+
+            </div>
+
+            <div class="about-card">
+                <div class="element bulge" id="outer-pic">
+                    <div class="element depress" id="inner-pic">
+                        <img src="images/grow.jpg" alt="" class="pic">
+                    </div>
+                </div>
+            <div class="depress guide about-content">
+                    <p>
+                        In late 2014, plans to venture into the 'green scene' has become a priority for operation expansion. The technology and research invested into producing 100% chemical free products evolved from the idea of the food that we eat together on our table to be fresh and healthy.
+            
+                    We love our farm, so we like to take care of the land that we share with the animals and plants. We feel like stewards of nature and protectors of our land. This is our healthy farm lifecycle.
+                    
+                    The most rewarding feeling is that we are able to share this beautiful farm experience with the entire family- keeping our roots to the ground and intertwined with one another, to build a green and healthy world for tomorrow.
+                    
+                    </p>
+                    
+                </div>
+
+            </div>
+         
+
+            <div class="about-card">
+                <div class="element bulge" id="outer-pic">
+                    <div class="element depress" id="inner-pic">
+                        <img src="images/hill.jpg" alt="" class="pic">
+                    </div>
+                </div>
+            <div class="depress guide about-content">
+                    <p>
+                        Being a Filipino-Japanese family, we have a heavy influence from both cultures. The resourcefulness of Filipinos and the detail-oriented Japanese which we apply to our business practices.
+            
+                    'Teraoka' literally translated into English is 'Temple on a Hill'. Like our name, this hill has become iconic to us and as we continue to grow our sacred garden of love, we extend our welcome to enjoy our sanctuary!        
+
+                    </p>
+                    
+                </div>
+
+            </div>     
+           
+        </div>
     </body>
 </html>
