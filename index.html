@@ -16,6 +16,7 @@
             <!-- <img src="images/logo.png" alt="" id="logo"> -->
             <a href="#splash">
                     <img src="images/logo.png" alt="" id="logo">
+                    <img src="images/chicken_waving.png" alt id="chicken">
             </a>
             <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
                     <button class="element order-button" type="button">🛒 Order</button>
@@ -25,12 +26,23 @@
         
         <p id="jap-banner">こんにちは~</p>
 
+        <div id="popper">
+            
+            <p id="close">
+                X
+            </p>
+            <br>
+            <p id="pop-text">
+                In cooperation with social distancing, we only allow payments via online bank transfer through BPI and BDO. Orders via this website <b>will be prioritized. </b> We're running on a skeletal workforce, so please bear with us. We’ll try our very best to reply as soon as possible.
+            </p>
+        </div>
+
         <div class="section" id="splash">
             
             <h1>Need veggies?</h1>
             <h1 id="gotcha">We gotcha!</h1>
             <p id="main-desc">A family-owned farm in Pangasinan, Philippines, offering quality 100% organic produce.
-                1st and only Certified Organic farm in Region 1. </p>
+                <b>1st and only Certified Organic farm in Region 1.</b> </p>
             <a href="#about">
                 <button class="element" id="howto-button" type="button" style="margin-top: 1em;">About Us</button>
             </a>
@@ -88,13 +100,33 @@
 
             <script>
                 document.getElementById("all").className += " active"; 
+
+                document.getElementById("logo").onmouseover = showChicken;
+                document.getElementById("logo").onmouseleave = hideChicken;
                 
+                document.getElementById("close").onclick = closePop; 
+                document.getElementById("popper").onlick = closePop;
+
                 document.getElementById("all").onclick = tab_click; 
                 document.getElementById("leafy-greens").onclick = tab_click; 
                 document.getElementById('fruits').onclick = tab_click; 
                 document.getElementById('fruiting-crops').onclick = tab_click; 
                 document.getElementById('root-crops').onclick = tab_click; 
     
+                function showChicken(event){
+                    console.log("here");
+                    document.getElementById("chicken").style.display = "inline-block";
+                }
+
+                function hideChicken(event){
+                    console.log("here");
+                    document.getElementById("chicken").style.display = "none";
+                }
+                
+                function closePop(clicked){
+                    document.getElementById("popper").style.display = 'none';
+                }
+
                 function tab_click(clicked) { 
     
                     const produce = ['leafy-greens', 'fruits', 'fruiting-crops', 'root-crops'];
@@ -463,7 +495,7 @@
                 <br>
                 <br>
                 <p>
-                    2. A text will be sent by our team to finalize your order and amount due.
+                    2. A text will be sent by our team to finalize your order and amount due. (Please give us 2 days lead time ➡️)
                     <br><br>
                     3. Pay via online bank transfer through BPI or BDO
                     <br><br>
