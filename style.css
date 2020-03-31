@@ -17,14 +17,23 @@ body{
 }
 
 h1{
-  font-size: 13vh;
-  font-family: Rubik, sans-serif;
-font-style: normal;
-font-weight: bold;
-line-height:100px;
-text-align: center;
+    font-size: 4em;
+    font-family: Rubik, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height:80px;
+    text-align: center;
+    margin-left: 1em;
+    margin-right: 1em;
 
-color: #38554C;
+    color: #38554C;
+}
+
+
+@media screen and (min-aspect-ratio: 1/1){
+  h1{
+    font-size: 13vh;
+  }
 }
 
 h2{
@@ -41,9 +50,117 @@ p{
   font-style: normal;
   font-weight: normal;
   font-size: 1em;
-  line-height: 40px;
+  line-height: 30px;
   text-align: center;
   margin-top: 0;
+}
+
+#popper{
+  bottom: 0;
+  float: bottom;
+  position: fixed;
+  background-color: #B8C800;
+  padding-left: 2em;
+  padding-right: 2em;
+  justify-self: center;
+  width: 100%;
+  z-index: 10;
+}
+
+#popper:hover{
+  cursor: pointer;
+}
+
+#pop-text{
+  position: relative;
+  font-size: .7em;
+  line-height: 20px;
+  /* float: left; */
+  text-align: left;
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+#close{
+  position: relative;
+  float: left;
+  margin: 0;
+  border: 0;
+  padding-right: .6em;
+  margin-top: 10px;
+  display: block;
+}
+
+#close:hover{
+  cursor: pointer;
+}
+
+#main-desc{
+  margin: 2em;
+  margin-top: 5em;
+  font-size: .7em;
+}
+
+#jap-banner{
+  margin: 0;
+  border: 0;
+  padding:0;
+  font-size: 2em;
+  color: #B8C800;
+	
+  
+  position: absolute;
+  top: 20%;
+  left: 20%; 
+  transform: rotate(-30deg) ;
+
+  /* Safari */
+  -webkit-transform: rotate(-30deg);
+
+  /* Firefox */
+  -moz-transform: rotate(-30deg);
+
+  /* IE */
+  -ms-transform: rotate(-30deg);
+
+  /* Opera */
+  -o-transform: rotate(-30deg);
+
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: rotate(-30deg) scale(0.95);
+	}
+
+	70% {
+		transform: rotate(-30deg) scale(1.1);
+	}
+
+	100% {
+		transform: rotate(-30deg) scale(0.95);
+	}
+}
+
+.parallax{
+    /* Set a specific height */
+    min-height: 100px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#farm{
+  background-image: url("images/farm.jpg");
 }
 
 #gotcha{
@@ -63,9 +180,66 @@ p{
 }
 
 #logo{
-  width: 5em;
-  padding-top: 1em;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 7em;
   padding-left: 2em;  
+  z-index: 11;
+}
+
+#chicken{
+  display: none;
+  width: 4em;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  margin-left: -30px;
+  position: relative;
+  top: -15px;
+  transform: rotate(30deg);
+  animation: hi 1s infinite;
+}
+
+@keyframes hi {
+	0% {
+		transform: rotate(30deg)
+	}
+
+	50% {
+		transform: rotate(10deg)
+	}
+
+	100% {
+		transform: rotate(30deg)
+	}
+}
+
+
+#logo:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 button{
@@ -84,6 +258,15 @@ button{
   transition-duration: .6s;
   transition-timing-function: ease-out;
 
+}
+
+.outer-button{
+  display: inline-block;
+  width: min-content;
+  height: min-content;
+  border-radius: 10px;
+  margin: .6em;
+  padding: .1em;
 }
 
 button:active{
@@ -114,7 +297,7 @@ button:visited{
   font-size: 1em;
   margin-top: 1em;
   margin-right: 2em;  
-
+  z-index: 1000;
 }
 
 .home-button{
@@ -157,22 +340,25 @@ a:visited{
   color: #000000;
 }
 
+.socmed{
+  width: 2em;
+}
+
 #stage-cards{
   display: inline-block;
   margin-top: 2em;
-  width: 70vw;
+  width: 90vw;
   background: #E4DCD4;
   box-shadow: 9px 9px 16px #C9B9AA, -9px -9px 16px #EFEAE5;
   border-radius: 10px;
-  padding-top: 2.7em;
-  padding-bottom: 1.5em;
+  padding-top: 1em;
   align-items: center;
 }
 
 .card{
   display:inline-block;
-  width: 65vw;
-  height: 3em;
+  width: 85vw;
+  height: 3.5em;
   border-radius: 10px;
   justify-content: center;
   margin-bottom: 1.2em;
@@ -190,6 +376,8 @@ a:visited{
   margin-top: .3em;
   font-weight: bold;
   color: #38554C;
+  width: 10em;
+  line-height: 25px;
 }
 
 .prod-price{
@@ -203,10 +391,12 @@ a:visited{
   width: 100%;
   position: fixed;
   justify-content: center;
+  z-index: 10;
 }
 
 #splash{
   margin-top: 7em; 
+  padding: 0;
   text-align: center;
   align-items: center;
   align-content: center;
@@ -214,7 +404,8 @@ a:visited{
 }
 
 .section{
-  margin-top: 15em;
+  margin-top: 5em;
+  margin-bottom: 5em;
   padding-top: 5em;
   text-align: center;
   align-items: center;
@@ -225,15 +416,64 @@ a:visited{
 }
 
 .tab{
-  margin-right: 1em;
+  margin: .1em;
 }
 
-#guide{
+.guide{
   margin-top: 3em;
   margin-bottom: 8em;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
   border-radius: 10px;
   display: inline-block;
   width: 70vw;
+}
+
+.about-card{
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-left: 2em;
+  margin-top: 2em;
+  
+}
+
+#outer-pic{
+  position: relative;
+    display: inline-block;
+    width: min-content;
+    height: min-content;
+    border-radius: 100%;
+    top: 30px;
+    right: 15px;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: .1em;
+    align-self: center;
+    /* z-index: 10; */
+}
+
+#inner-pic{
+  border-radius: 100%;
+  margin: .1em;
+}
+
+.pic{
+  width: 10em;
+  height: 10em;
+  border-radius: 100%;
+  object-fit:cover;
+  background-position:center;
+}
+
+.about-content{
+  margin: 0;
+  margin-left: -35;
+  margin-top: -15;
+}
+
+.about-content p{
+  padding-top: 1em;
 }

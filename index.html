@@ -16,6 +16,7 @@
             <!-- <img src="images/logo.png" alt="" id="logo"> -->
             <a href="#splash">
                     <img src="images/logo.png" alt="" id="logo">
+                    <img src="images/chicken_waving.png" alt id="chicken">
             </a>
             <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
                     <button class="element order-button" type="button">🛒 Order</button>
@@ -23,52 +24,118 @@
         </div>
         <br>
         
-        <div id="splash">
+        <p id="jap-banner">こんにちは~</p>
+
+        <div id="popper">
+            
+            <p id="close">
+                X
+            </p>
+            <br>
+            <p id="pop-text">
+                In cooperation with social distancing, we only allow payments via online bank transfer through BPI and BDO. Orders via this website <b>will be prioritized. </b> We're running on a skeletal workforce, so please bear with us. We’ll try our very best to reply as soon as possible.
+            </p>
+        </div>
+
+        <div class="section" id="splash">
+            
             <h1>Need veggies?</h1>
             <h1 id="gotcha">We gotcha!</h1>
-
+            <p id="main-desc">A family-owned farm in Pangasinan, Philippines, offering quality 100% organic produce.
+                <b>1st and only Certified Organic farm in Region 1.</b> </p>
+            <a href="#about">
+                <button class="element" id="howto-button" type="button" style="margin-top: 1em;">About Us</button>
+            </a>
             <a href="#howto">
                 <button class="element" id="howto-button" type="button" style="margin-top: 1em;">How do I order?</button>
             </a>
             <a href="#produce">
-                <button class="element" id="howto-button" type="button" style="margin-top: 1em;"> Check produce</button>
+                <button class="element" id="howto-button" type="button" style="margin-top: 1em;">Product List</button>
             </a>
             <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
                 <button class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
             </a>
+            <br>
+            <br>
+            <br>
+
+            <a href="https://facebook.com/Teraokafamilyfarm/">
+                <img src="images/fb-icon.png" alt="" class="socmed">
+            </a>
+
+            <a href="https://www.instagram.com/teraokafamilyfarm/">
+                <img src="images/ig-icon.png" alt="" class="socmed">
+            </a>
         </div>
 
+        <!-- <div class="parallax" id="farm"></div> -->
+
         <div class="section" id="produce">
-            <!-- create a filter and cards, but display: none only -->
             <h2>Take a look at our produce</h2>
             <p>(Prices are subjected to change without prior notice)</p>
-            <button id="all" class="element tab" type="button">🥗 All</button>
-            <button id="leafy-greens" class="element tab" type="button">🥬 Leafy Greens</button>
-            <button id="fruiting-crops" class="element tab" type="button">🌱 Fruiting Crops</button>
-            <button id="fruits" class="element tab" type="button">🍓 Fruits</button>
-            <button id="root-crops" class="element tab" type="button">🥔 Root Crops</button>
+            <div class="element bulge outer-button">
+                <button id="all" class="element tab" type="button">🥗 All</button>
+
+            </div>
+            
+            <div class="element bulge outer-button">
+                <button id="leafy-greens" class="element tab" type="button">🥬 Leafy Greens</button>
+            </div>
+
+            <div class="element bulge outer-button">
+                <button id="fruiting-crops" class="element tab" type="button">🌱 Fruiting Crops</button>
+            </div>
+
+            <div class="element bulge outer-button">
+                <button id="fruits" class="element tab" type="button">🍓 Fruits</button>
+            </div>
+
+            <div class="element bulge outer-button">
+                <button id="root-crops" class="element tab" type="button">🥔 Root Crops</button>
+            </div>
+            
+            
+           
+            
 
             <script>
+                document.getElementById("all").className += " active"; 
+
+                document.getElementById("logo").onmouseover = showChicken;
+                document.getElementById("logo").onmouseleave = hideChicken;
+                
+                document.getElementById("close").onclick = closePop; 
+                document.getElementById("popper").onlick = closePop;
+
                 document.getElementById("all").onclick = tab_click; 
                 document.getElementById("leafy-greens").onclick = tab_click; 
                 document.getElementById('fruits').onclick = tab_click; 
                 document.getElementById('fruiting-crops').onclick = tab_click; 
                 document.getElementById('root-crops').onclick = tab_click; 
     
+                function showChicken(event){
+                    console.log("here");
+                    document.getElementById("chicken").style.display = "inline-block";
+                }
+
+                function hideChicken(event){
+                    console.log("here");
+                    document.getElementById("chicken").style.display = "none";
+                }
+                
+                function closePop(clicked){
+                    document.getElementById("popper").style.display = 'none';
+                }
+
                 function tab_click(clicked) { 
     
-                    console.log(this.id);
                     const produce = ['leafy-greens', 'fruits', 'fruiting-crops', 'root-crops'];
                     
                     if (this.id != 'all'){
-                        console.log(produce);
         
                         const index = produce.indexOf(this.id);
                         if (index > -1) 
                             produce.splice(index, 1);
-                        
-        
-                        console.log(produce);
         
                         //clicked button's id should be removed from "produce" already
         
@@ -98,7 +165,7 @@
                         }
                     }
 
-                    // Get all elements with class="tablinks" and remove the class "active"
+                    // Get all elements with class="tab" and remove the class "active"
                     tablinks = document.getElementsByClassName("tab");
                     for (i = 0; i < tablinks.length; i++) {
                         console.log(tablinks[i].id + " " + tablinks[i].classname);
@@ -418,7 +485,7 @@
         
         <div class="section" id="howto">
             <h2> How do I order?</h2>
-            <div class="depress" id="guide">
+            <div class="depress guide">
                 <p>
                     1. Click the button and fill out the form:
                 </p>
@@ -428,7 +495,7 @@
                 <br>
                 <br>
                 <p>
-                    2. A text will be sent by our team to finalize your order and amount due.
+                    2. A text will be sent by our team to finalize your order and amount due. (Please give us 2 days lead time ➡️)
                     <br><br>
                     3. Pay via online bank transfer through BPI or BDO
                     <br><br>
@@ -436,6 +503,67 @@
                 </p>
             </div>
         </div>
-        
+
+        <div class="section" id="about">
+
+            <h2>About Us</h2>
+
+            <div class="about-card">
+                <div class="element bulge" id="outer-pic">
+                    <div class="element depress" id="inner-pic">
+                        <img src="images/farm.jpg" alt="" class="pic">
+                    </div>
+                </div>
+                <div class="depress guide about-content">
+                    <p>
+                        In 1991, trenches of land were acquired in Mangaterem, Pangasinan. The land includes a hill which overlooks the the great plains that surround it. The family built a vacation house to enjoy life's simple pleasures - a laid back life with a scenic provincial view different to that of Baguio City, where they are from.
+    
+                        A plantation of 4000 mango trees were lined which added beautiful greenery and poultry livestock came about.
+                    </p>
+                    
+                </div>
+
+            </div>
+
+            <div class="about-card">
+                <div class="element bulge" id="outer-pic">
+                    <div class="element depress" id="inner-pic">
+                        <img src="images/grow.jpg" alt="" class="pic">
+                    </div>
+                </div>
+            <div class="depress guide about-content">
+                    <p>
+                        In late 2014, plans to venture into the 'green scene' has become a priority for operation expansion. The technology and research invested into producing 100% chemical free products evolved from the idea of the food that we eat together on our table to be fresh and healthy.
+            
+                    We love our farm, so we like to take care of the land that we share with the animals and plants. We feel like stewards of nature and protectors of our land. This is our healthy farm lifecycle.
+                    
+                    The most rewarding feeling is that we are able to share this beautiful farm experience with the entire family- keeping our roots to the ground and intertwined with one another, to build a green and healthy world for tomorrow.
+                    
+                    </p>
+                    
+                </div>
+
+            </div>
+         
+
+            <div class="about-card">
+                <div class="element bulge" id="outer-pic">
+                    <div class="element depress" id="inner-pic">
+                        <img src="images/hill.jpg" alt="" class="pic">
+                    </div>
+                </div>
+            <div class="depress guide about-content">
+                    <p>
+                        Being a Filipino-Japanese family, we have a heavy influence from both cultures. The resourcefulness of Filipinos and the detail-oriented Japanese which we apply to our business practices.
+            
+                    'Teraoka' literally translated into English is 'Temple on a Hill'. Like our name, this hill has become iconic to us and as we continue to grow our sacred garden of love, we extend our welcome to enjoy our sanctuary!        
+
+                    </p>
+                    
+                </div>
+
+            </div>     
+           
+        </div>
     </body>
 </html>
