@@ -29,12 +29,15 @@
             
             <h1>Need veggies?</h1>
             <h1 id="gotcha">We gotcha!</h1>
-
+            <p id="main-desc">A 200 hectare family-owned farm in Pangasinan, Philippines. We strive to offer quality 100% organic produce. </p>
+            <a href="#about">
+                <button class="element" id="howto-button" type="button" style="margin-top: 1em;">About Us</button>
+            </a>
             <a href="#howto">
                 <button class="element" id="howto-button" type="button" style="margin-top: 1em;">How do I order?</button>
             </a>
             <a href="#produce">
-                <button class="element" id="howto-button" type="button" style="margin-top: 1em;"> Check produce</button>
+                <button class="element" id="howto-button" type="button" style="margin-top: 1em;">Product List</button>
             </a>
             <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
                 <button class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
@@ -56,11 +59,30 @@
             <!-- create a filter and cards, but display: none only -->
             <h2>Take a look at our produce</h2>
             <p>(Prices are subjected to change without prior notice)</p>
-            <button id="all" class="element tab" type="button">🥗 All</button>
-            <button id="leafy-greens" class="element tab" type="button">🥬 Leafy Greens</button>
-            <button id="fruiting-crops" class="element tab" type="button">🌱 Fruiting Crops</button>
-            <button id="fruits" class="element tab" type="button">🍓 Fruits</button>
-            <button id="root-crops" class="element tab" type="button">🥔 Root Crops</button>
+            <div class="element bulge outer-button">
+                <button id="all" class="element tab" type="button">🥗 All</button>
+
+            </div>
+            
+            <div class="element bulge outer-button">
+                <button id="leafy-greens" class="element tab" type="button">🥬 Leafy Greens</button>
+            </div>
+
+            <div class="element bulge outer-button">
+                <button id="fruiting-crops" class="element tab" type="button">🌱 Fruiting Crops</button>
+            </div>
+
+            <div class="element bulge outer-button">
+                <button id="fruits" class="element tab" type="button">🍓 Fruits</button>
+            </div>
+
+            <div class="element bulge outer-button">
+                <button id="root-crops" class="element tab" type="button">🥔 Root Crops</button>
+            </div>
+            
+            
+           
+            
 
             <script>
                 document.getElementById("all").className += " active"; 
