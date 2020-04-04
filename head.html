@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title> 寺岡 | Teraoka Farms </title>
+        <meta name="description" content="Teraoka farms - soft ui v1">
+        <meta name="author" content="Sophia Therese Rivera">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Muli|Rubik&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <div>
+            <button class="element" id="logout-button">Logout</button>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="modal" id="addprod-modal">
+            <form action="/add_product.php">
+                <label for="pname">Product Name:</label>
+                <br>
+                <input type="text" id="pname" name="pname"><br><br>
+                <label for="pprice">Price:</label>
+                <br>
+                <input type="text" id="pprice" name="pprice"><br><br>
+                <label for="uom">Unit of Measurement
+                    <input list="uom" name="uom" /></label>
+                <br>
+                    <datalist id="uom-list">
+                      <option value="per kg">
+                      <option value="per pack">
+                      <option value="per piece">
+                    </datalist>
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+              </form> 
+
+        </div>
+
+        <div class="modal" id="editprod-modal">
+            <form action="/edit_product.php">
+                <label for="pname">Product Name:</label>
+                <input type="text" id="pname" name="pname"><br><br>
+                <label for="pprice">Price:</label>
+                <input type="text" id="pprice" name="pprice"><br><br>
+                <label for="uom">Unit of Measurement
+                    <input list="uom" name="uom" /></label>
+                    <datalist id="uom-list">
+                      <option value="per kg">
+                      <option value="per pack">
+                      <option value="per piece">
+                    </datalist>
+                <input type="submit" value="Submit">
+              </form> 
+
+        </div>
+
+        <div id="prodman">
+            <h2 class="admin-h2">Products</h2>
+            <button class="simple-button" id="addprod-button">Add Product</button>
+            <br>
+
+            <table style="width:80%">
+                <tr class="element depress">
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Unit of Measurement</th>
+                <th>Actions</th>
+                </tr>
+                <tr>
+                <td align="center" class="prodname">Lemon</td> 
+                <td  align="center" class="prodprice">280</td>
+                <td align="center" class="produom">per kg</td>
+                <td align="center">
+                    <button class="simple-button prod-edit">Edit</button>
+                    <button class="simple-button prod-delete">Delete</button>
+                </td>
+                </tr>
+            </table>     
+        </div>
+    </body>
+
+</html>

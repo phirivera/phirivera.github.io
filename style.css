@@ -16,6 +16,8 @@ body{
     background-color:#E4DCD4;
 }
 
+
+
 h1{
     font-size: 4em;
     font-family: Rubik, sans-serif;
@@ -260,6 +262,19 @@ button{
 
 }
 
+.simple-button{
+  font-size: .7em;
+  width: max-content;
+  margin-bottom: .5em;
+
+}
+
+.prod-delete{
+  color: #CB0000;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 .outer-button{
   display: inline-block;
   width: min-content;
@@ -290,9 +305,20 @@ button:visited{
   box-shadow: inset 9px 9px 16px #C9B9AA, inset -9px -9px 16px #EFEAE5;
 }
 
+#login-button{
+  position: relative;
+  float: right;
+  margin-right: 120px; 
+}
+
+#logout-button{
+  position: relative;
+  float: right;
+  margin-right: 1em; 
+  margin-top: 1em;
+}
 
 .order-button{
-
   float: right;
   font-size: 1em;
   margin-top: 1em;
@@ -476,4 +502,52 @@ a:visited{
 
 .about-content p{
   padding-top: 1em;
+}
+
+
+#prodman{
+
+  font-family: Muli, sans-serif;
+  align-items: center;
+  align-content: center;
+}
+
+table{
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+td {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  padding: 1em;
+}
+
+th{
+  padding: 1em;
+  border-radius: 20%;
+  
+}
+
+.admin-h2{
+  float: left;
+  padding: 1em;
+  margin-left: 7%;
+}
+
+#addprod-button{
+  margin-top: 3em;
+}
+
+.modal{
+  position: fixed;
+  display: none;
+  width: 15em;
+  height: 15em;
+  background-color: #ffffff;
+
+}
+
+#addprod-modal{
+  display: block;
 }
