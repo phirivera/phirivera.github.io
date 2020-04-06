@@ -13,12 +13,10 @@ document.getElementById('fruiting-crops').onclick = tab_click;
 document.getElementById('root-crops').onclick = tab_click; 
 
 function showChicken(event){
-    console.log("here");
     document.getElementById("chicken").style.display = "inline-block";
 }
 
 function hideChicken(event){
-    console.log("here");
     document.getElementById("chicken").style.display = "none";
 }
 
