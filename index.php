@@ -101,8 +101,9 @@
                     $name = $row["name"]; // "Leafy Greens"
                     $nameForClass = str_replace(' ', '-', strtolower($name)); // "leafy-greens"
                     $emoji = $row["emoji"];
+                    $codepoint = $row["codepoint"];
 
-                    echo '<div class="element bulge outer-button"> <button id="' . $nameForClass . '" class="element tab" type="button">' . $emoji . ' ' . $name . '</button></div>' ;
+                    echo '<div class="element bulge outer-button"> <button id="' . $nameForClass . '" class="element tab" type="button"> <p>' . $codepoint . '</p>' . ' ' . $name . '</button></div>' ;
                 }
             } else {
                 echo "0 results";
