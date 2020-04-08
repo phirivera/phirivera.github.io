@@ -80,8 +80,8 @@
             <?php
 
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "teraokaf_luigi";
+            $password = "luigitutaan";
             $dbname = "teraokaf_main";
 
             // Create connection
@@ -119,8 +119,8 @@
             <?php
 
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "teraokaf_luigi";
+            $password = "luigitutaan";
             $dbname = "teraokaf_main";
 
             // Create connection
