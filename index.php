@@ -12,6 +12,28 @@
     </head>
 
     <body>
+    
+    <?php
+
+            $servername = "localhost";
+            $username = "teraokaf_luigi";
+            $password = "luigitutaan";
+            $dbname = "teraokaf_main";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = 'INSERT INTO page_load() VALUES ();';
+
+            $result = $conn->query($sql);
+
+            $conn->close();
+
+            ?>
         <div id="topbar">
             <!-- <img src="images/logo.png" alt="" id="logo"> -->
             <a href="#splash">
