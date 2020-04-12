@@ -4,7 +4,7 @@ table.id = "tblCopy";
 document.body.appendChild(table);
 document.getElementById("tblCopy");
 
-document.getElementById('addprod-button').onclick = show_addModal;
+// document.getElementById('addprod-button').onclick = show_addModal;
 document.getElementsByClassName('modal-close').onclick = hide_modal;
 document.getElementById('overlay').onclick = hide_modal;
 
@@ -80,6 +80,32 @@ arrHead = ['Product Name', 'Price', 'Unit of Measurement', 'Actions'];      // S
                 td.appendChild(ele);
             }
         }
+    }
+
+    // DELETE TABLE ROW.
+    function removeRow(oButton) {
+        var empTab = document.getElementById('prod-table');
+        empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
+    }
+
+    // EXTRACT AND SUBMIT TABLE DATA.
+    function submit() {
+        var myTab = document.getElementById('empTable');
+        var values = new Array();
+
+        // LOOP THROUGH EACH ROW OF THE TABLE.
+        for (row = 1; row < myTab.rows.length - 1; row++) {
+            for (c = 0; c < myTab.rows[row].cells.length; c++) {   // EACH CELL IN A ROW.
+
+                var element = myTab.rows.item(row).cells[c];
+                if (element.childNodes[0].getAttribute('type') == 'text') {
+                    values.push("'" + element.childNodes[0].value + "'");
+                }
+            }
+        }
+        
+        // SHOW THE RESULT IN THE CONSOLE WINDOW.
+        console.log(values);
     }
 
     
