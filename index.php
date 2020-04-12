@@ -3,6 +3,16 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163344564-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'UA-163344564-1');
+        </script>
 
         <title> 寺岡 | Teraoka Farms </title>
         <meta name="description" content="Teraoka farms - soft ui v1">
@@ -12,6 +22,28 @@
     </head>
 
     <body>
+    
+    <?php
+
+            $servername = "localhost";
+            $username = "teraokaf_luigi";
+            $password = "luigitutaan";
+            $dbname = "teraokaf_main";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = 'INSERT INTO page_load() VALUES ();';
+
+            $result = $conn->query($sql);
+
+            $conn->close();
+
+            ?>
         <div id="topbar">
             <!-- <img src="images/logo.png" alt="" id="logo"> -->
             <a href="#splash">
@@ -23,7 +55,7 @@
             </a>
         </div>
         <br>
-        
+        <button class="element bulge" id="login-button">Login</button>
         <p id="jap-banner">こんにちは~</p>
 
         <div id="popper">
@@ -80,8 +112,8 @@
             <?php
 
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "teraokaf_luigi";
+            $password = "luigitutaan";
             $dbname = "teraokaf_main";
 
             // Create connection
@@ -101,8 +133,9 @@
                     $name = $row["name"]; // "Leafy Greens"
                     $nameForClass = str_replace(' ', '-', strtolower($name)); // "leafy-greens"
                     $emoji = $row["emoji"];
+                    $codepoint = $row["codepoint"];
 
-                    echo '<div class="element bulge outer-button"> <button id="' . $nameForClass . '" class="element tab" type="button">' . $emoji . ' ' . $name . '</button></div>' ;
+                    echo '<div class="element bulge outer-button"> <button id="' . $nameForClass . '" class="element tab" type="button"> <p>' . $codepoint . '</p>' . ' ' . $name . '</button></div>' ;
                 }
             } else {
                 echo "0 results";
@@ -119,8 +152,8 @@
             <?php
 
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "teraokaf_luigi";
+            $password = "luigitutaan";
             $dbname = "teraokaf_main";
 
             // Create connection
