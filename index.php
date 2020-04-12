@@ -55,7 +55,7 @@
             </a>
         </div>
         <br>
-        
+        <button class="element bulge" id="login-button">Login</button>
         <p id="jap-banner">こんにちは~</p>
 
         <div id="popper">
