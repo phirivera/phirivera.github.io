@@ -18,11 +18,48 @@
                     <img src="images/logo.png" alt="" id="logo">
                     <img src="images/chicken_waving.png" alt id="chicken">
             </a>
+            
+            
+
             <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
-                    <button class="element order-button" type="button">🛒 Order</button>
+                    <button class="order-button" type="button">🛒 Order</button>
             </a>
+
+            <button class="element" id="login-button" type="button">Login</button>
         </div>
         <br>
+        
+        <p id="jap-banner">こんにちは~</p>
+
+        <div id="login-modal" class="element">
+            <div id="drawer-button" class="element modal-close" onClick="hideModal(this)">
+                <!-- <p class="modal-close" onClick="hideModal(this)">X</p> -->
+                <p id="close-copy">x</p>
+            </div>
+            <br>
+            <br>   
+            <p class="modal-title">Add Product</p>    
+            <br>
+            
+            <form action="/authenticate.php" method="POST">
+                <label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input class="depress" type="text" name="username" placeholder="Username" id="username" required>
+                
+                <br>
+                <br>
+                <label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+                <input class="depress" type="password" name="password" placeholder="Password" id="password" required>
+                <br>
+                <br>
+                <input class="element bulge" type="submit" value="Login">
+              </form> 
+
+        </div>
+
         
         <p id="jap-banner">こんにちは~</p>
 

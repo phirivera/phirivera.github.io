@@ -307,7 +307,8 @@ button:visited{
 #login-button{
   position: relative;
   float: right;
-  margin-right: 120px; 
+  margin-right: 20px; 
+  margin-top: 20px;
 }
 
 #logout-button{
@@ -572,7 +573,7 @@ th{
 }
 
 .modal-close{
-  float: right;
+  float: left;
   position: relative;
 }
 
@@ -606,18 +607,67 @@ input[type=submit]:hover{
   color: #38554C;
 }
 
-input[type=text]{
-  padding: 5px;
+input[type=text], input[type=password]{
+  padding: 10px;
   border-radius: 20px;
   box-sizing: border-box;
   border: .5px solid #C9B9AA;
   margin-top: 5px;
   width: 100%;
+  font-family: Muli, sans-serif;
 }
 
 #addprod-modal{
   display: none;
+}
 
+#login-modal{
+  display: none;
+  float: right;
+  right: 0;
+  top: 0;
+  width: 15em;
+  height: 100%;
+  z-index: 12;
+  position: fixed;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  border-radius: 10px;
+
+  /* background-color: white; */
+  box-shadow: 0px 4px 100px #C9B9AA;
+
+}
+
+#drawer-button{
+  border-radius: 100%;
+  margin-left: -80px;
+  /* background-color:#E4DCD4; */
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  /* padding: 1em; */
+  font-family: Muli, sans-serif;
+  font-size:1em;
+  text-align: center;
+  background-color: #B8C800;
+  box-shadow: 0px 4px 100px #C9B9AA;
+
+  transition-property: padding;
+  transition-duration: .6s;
+  transition-timing-function: ease-out;
+}
+
+#drawer-button:hover{
+  cursor: pointer;
+  padding: .2em;
+  text-decoration: none;
+}
+
+#close-copy{
+  margin-top: 4px;
 }
 
 #editprod-modal{

@@ -4,7 +4,7 @@ table.id = "tblCopy";
 document.body.appendChild(table);
 document.getElementById("tblCopy");
 
-// document.getElementById('addprod-button').onclick = show_addModal;
+document.getElementById('addprod-button').onclick = show_addModal;
 document.getElementsByClassName('modal-close').onclick = hide_modal;
 document.getElementById('overlay').onclick = hide_modal;
 
