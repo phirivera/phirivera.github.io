@@ -8,10 +8,12 @@
         <meta name="description" content="Teraoka farms - soft ui v1">
         <meta name="author" content="Sophia Therese Rivera">
         <link rel="stylesheet" type="text/css" href="style.css">
+        
         <link href="https://fonts.googleapis.com/css?family=Muli|Rubik&display=swap" rel="stylesheet"> 
     </head>
 
     <body>
+        <!-- <div id="overlay"></div> -->
         <div id="topbar">
             <!-- <img src="images/logo.png" alt="" id="logo"> -->
             <a href="#splash">
@@ -60,9 +62,6 @@
 
         </div>
 
-        
-        <p id="jap-banner">こんにちは~</p>
-
         <div id="popper">
             
             <p id="close">
@@ -103,6 +102,7 @@
             <a href="https://www.instagram.com/teraokafamilyfarm/">
                 <img src="images/ig-icon.png" alt="" class="socmed">
             </a>
+
         </div>
 
         <!-- <div class="parallax" id="farm"></div> -->
@@ -281,4 +281,5 @@
            
         </div>
     </body>
+    <script src="scriptlogin.js"></script>
 </html>
