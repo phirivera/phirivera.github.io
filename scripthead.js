@@ -10,8 +10,8 @@ arrHead = ['Actions', 'Name', 'Price', 'UOM', 'Category'];
 
 function saveDeets(event){
     var appearEdit = event.parentNode.parentNode.rowIndex;       // TEXTFIELD -> TD -> TR.
-    document.getElementById(appearEdit).style.display = "block";
-
+    document.getElementById(appearEdit).style.display = "inline-block";
+    document.getElementById("saveall").style.display = "inline-block";
 }
 
 function createTable() {
@@ -52,6 +52,7 @@ function addRow() {
             button.setAttribute('type', 'button');
             button.setAttribute('value', 'Remove');
             button.setAttribute('onclick', 'removeRow(this)');
+            button.style.fontSize = '.7em';
 
             td.appendChild(button);
 
@@ -59,8 +60,11 @@ function addRow() {
             var editbutton = document.createElement('input');
             editbutton.setAttribute('type', 'button');
             editbutton.setAttribute('value', 'Save');
+            // background-color: #B8C800;
+            editbutton.style.backgroundColor = '#B8C800';
+            editbutton.style.fontSize = '.7em';
 
-            editbutton.setAttribute('onclick', 'saveRow(this)');
+            editbutton.setAttribute('onclick', 'submitRow(this)');
             editbutton.id = rowCnt;
             editbutton.style.display = "none";
 
@@ -90,6 +94,10 @@ function addRow() {
             ele.setAttribute('value', '');
             ele.setAttribute('id', 'puom');
             ele.setAttribute('list', 'uom');
+            ele.setAttribute('onchange', 'saveDeets(this)');
+            ele.setAttribute('onkeyup', 'this.onchange()');
+            ele.setAttribute('onpaste', 'this.onchange()');
+            ele.setAttribute('oninput', 'this.onchange()');
 
             td.appendChild(ele);
 
@@ -103,6 +111,10 @@ function addRow() {
             ele.setAttribute('value', '');
             ele.setAttribute('id', 'category');
             ele.setAttribute('list', 'catlist');
+            ele.setAttribute('onchange', 'saveDeets(this)');
+            ele.setAttribute('onkeyup', 'this.onchange()');
+            ele.setAttribute('onpaste', 'this.onchange()');
+            ele.setAttribute('oninput', 'this.onchange()');
 
             td.appendChild(ele);
 
@@ -111,6 +123,12 @@ function addRow() {
             dat.setAttribute('id', 'catlist');
         }
     }
+}
+
+//function: confirmation to delete
+function confirmRemove(event){
+
+
 }
 
 //Function: to delete a row
@@ -136,10 +154,11 @@ function submit() {
         }
     }
     
+    document.getElementById("saveall").style.display = "none";
     console.log(values);
 }
 
-function saveRow(event){
+function submitRow(event){
     event.style.display = "none";
     // TODO: maybe pass the change of that row only?
     // currently the Edit button calls the "submit()" function

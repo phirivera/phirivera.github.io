@@ -609,6 +609,31 @@ input[type=submit]:hover{
   color: #38554C;
 }
 
+input[type=button]{
+  padding: .5em;
+  margin: .5em;
+  font-family: Muli, sans-serif;
+  font-weight: normal;
+  border-radius: 10px;
+  border: none;
+  transition-property: padding;
+  transition-duration: .6s;
+  transition-timing-function: ease-out;
+}
+
+input[type=button]:hover{
+  cursor: pointer;
+  padding: .7em;
+  text-decoration: none;
+  color: #38554C;
+}
+
+#saveall{
+  margin-left: 2%;
+  display: none;
+  background-color: #B8C800;
+}
+
 input[type=text], input[type=password]{
   padding: 10px;
   border-radius: 20px;
