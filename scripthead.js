@@ -4,108 +4,177 @@ table.id = "tblCopy";
 document.body.appendChild(table);
 document.getElementById("tblCopy");
 
-// document.getElementById('addprod-button').onclick = show_addModal;
-document.getElementsByClassName('modal-close').onclick = hide_modal;
-document.getElementById('overlay').onclick = hide_modal;
-
-
-function show_addModal(event){
-    document.getElementById("overlay").style.display="block";
-    var mod = document.getElementById("addprod-modal");
-    mod.style.display = "block";
-    mod.classList.add("modal");
-    mod.classList.add("element");
-}
-
-function edit_product(event){
-
-    var targ = event.target || event.srcElement;
-    document.getElementById("").value += targ.textContent || targ.innerText;
-
-    document.getElementById("overlay").style.display="block";
-    var mod = document.getElementById("editprod-modal");
-    mod.style.display = "block";
-    mod.classList.add("modal");
-    mod.classList.add("element");
-
-
-}
-
-//gets the parent (modal) of the close button
-function hide_modal(event){
-    document.getElementById("overlay").style.display="none";
-    event.parentNode.style.display = 'none';
-}
-
-//EDIT FROM TABLE -- TO BE CODED PA
-
-// ARRAY FOR HEADER.
 var arrHead = new Array();
-arrHead = ['Product Name', 'Price', 'Unit of Measurement', 'Actions'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+arrHead = ['Actions', 'Name', 'Price', 'UOM', 'Category'];
+
+
+function saveDeets(event){
+    var appearEdit = event.parentNode.parentNode.rowIndex;       // TEXTFIELD -> TD -> TR.
+    document.getElementById(appearEdit).style.display = "inline-block";
+    document.getElementById("saveall").style.display = "inline-block";
+}
+
+function createTable() {
+    var empTable = document.createElement('table');
+    empTable.setAttribute('id', 'empTable');            // set table id
+
+    var tr = empTable.insertRow(-1);
+
+    for (var h = 0; h < arrHead.length; h++) {
+        var th = document.createElement('th');          // table header
+        th.innerHTML = arrHead[h];
+        tr.appendChild(th);
+    }
+
+    var div = document.getElementById('cont');
+    div.appendChild(empTable);    
+}
 
 
 
 
-    // ADD A NEW ROW TO THE TABLE.s
-    function addRow() {
-        var empTab = document.getElementById('prod-table');
 
-        var rowCnt = empTab.rows.length;        // GET TABLE ROW COUNT.
-        var tr = empTab.insertRow(rowCnt);      // TABLE ROW.
-        tr = empTab.insertRow(rowCnt);
+// Add a new row to the table
+function addRow() {
+    var empTab = document.getElementById('empTable');
 
-        for (var c = 0; c < arrHead.length; c++) {
-            var td = document.createElement('td');          // TABLE DEFINITION.
-            td = tr.insertCell(c);
+    var rowCnt = empTab.rows.length;        // table row count
+    var tr = empTab.insertRow(rowCnt);      // tr
 
-            if (c == 0) {           // FIRST COLUMN.
-                // ADD A BUTTON.
-                var button = document.createElement('input');
+    for (var c = 0; c < arrHead.length; c++) {
+        var td = document.createElement('td');          // td
+        td = tr.insertCell(c);
 
-                // SET INPUT ATTRIBUTE.
-                button.setAttribute('type', 'button');
-                button.setAttribute('value', 'Remove');
+        //c means column
+        if (c == 0) {          
+            // remove button
+            var button = document.createElement('input');
+            button.setAttribute('type', 'button');
+            button.setAttribute('value', 'Remove');
+            button.setAttribute('onclick', 'removeRow(this)');
+            button.style.fontSize = '.7em';
 
-                // ADD THE BUTTON's 'onclick' EVENT.
-                button.setAttribute('onclick', 'removeRow(this)');
+            td.appendChild(button);
 
-                td.appendChild(button);
-            }
-            else {
-                // CREATE AND ADD TEXTBOX IN EACH CELL.
-                var ele = document.createElement('input');
-                ele.setAttribute('type', 'text');
-                ele.setAttribute('value', '');
+            // edit button
+            var editbutton = document.createElement('input');
+            editbutton.setAttribute('type', 'button');
+            editbutton.setAttribute('value', 'Save');
+            // background-color: #B8C800;
+            editbutton.style.backgroundColor = '#B8C800';
+            editbutton.style.fontSize = '.7em';
 
-                td.appendChild(ele);
+            editbutton.setAttribute('onclick', 'submitRow(this)');
+            editbutton.id = rowCnt;
+            editbutton.style.display = "none";
+
+            td.appendChild(editbutton);
+        }
+        else if (c <3){
+            // create textboxes. changing the content will go to saveDeets() --> adds the Save button
+            var ele = document.createElement('input');
+            ele.setAttribute('type', 'text');
+            ele.setAttribute('value', '');
+            ele.setAttribute('onchange', 'saveDeets(this)');
+            ele.setAttribute('onkeyup', 'this.onchange()');
+            ele.setAttribute('onpaste', 'this.onchange()');
+            ele.setAttribute('oninput', 'this.onchange()');
+
+            td.appendChild(ele);
+        }else if (c == 3){
+            // <input class="depress" type="text" list="uom" id="puom" name="puom"/>
+            //     <datalist id="uom">
+            //     <option>kg</option>
+            //     <option>pack</option>
+            //     <option>piece</option>
+            //     </datalist>
+
+            var ele = document.createElement('input');
+            ele.setAttribute('type', 'text');
+            ele.setAttribute('value', '');
+            ele.setAttribute('id', 'puom');
+            ele.setAttribute('list', 'uom');
+            ele.setAttribute('onchange', 'saveDeets(this)');
+            ele.setAttribute('onkeyup', 'this.onchange()');
+            ele.setAttribute('onpaste', 'this.onchange()');
+            ele.setAttribute('oninput', 'this.onchange()');
+
+            td.appendChild(ele);
+
+            //adding the data
+            var dat = document.createElement('datalist');
+            dat.setAttribute('id', 'uom');
+
+        }else{
+            var ele = document.createElement('input');
+            ele.setAttribute('type', 'text');
+            ele.setAttribute('value', '');
+            ele.setAttribute('id', 'category');
+            ele.setAttribute('list', 'catlist');
+            ele.setAttribute('onchange', 'saveDeets(this)');
+            ele.setAttribute('onkeyup', 'this.onchange()');
+            ele.setAttribute('onpaste', 'this.onchange()');
+            ele.setAttribute('oninput', 'this.onchange()');
+
+            td.appendChild(ele);
+
+            //adding the data
+            var dat = document.createElement('datalist');
+            dat.setAttribute('id', 'catlist');
+        }
+    }
+}
+
+//function: confirmation to delete
+function confirmRemove(event){
+
+
+}
+
+//Function: to delete a row
+function removeRow(oButton) {
+    var empTab = document.getElementById('empTable');
+    empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
+}
+
+// Submit table data to console
+function submit() {
+    //TODO: remove the save buttons if the main save button is pressed
+    var myTab = document.getElementById('empTable');
+    var values = new Array();
+
+    // LOOP THROUGH EACH ROW OF THE TABLE.
+    for (row = 1; row < myTab.rows.length; row++) {
+        for (c = 0; c < myTab.rows[row].cells.length; c++) {   // EACH CELL IN A ROW.
+
+            var element = myTab.rows.item(row).cells[c];
+            if (element.childNodes[0].getAttribute('type') == 'text') {
+                values.push("'" + element.childNodes[0].value + "'");
             }
         }
     }
-
-    // DELETE TABLE ROW.
-    function removeRow(oButton) {
-        var empTab = document.getElementById('prod-table');
-        empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
-    }
-
-    // EXTRACT AND SUBMIT TABLE DATA.
-    function submit() {
-        var myTab = document.getElementById('empTable');
-        var values = new Array();
-
-        // LOOP THROUGH EACH ROW OF THE TABLE.
-        for (row = 1; row < myTab.rows.length - 1; row++) {
-            for (c = 0; c < myTab.rows[row].cells.length; c++) {   // EACH CELL IN A ROW.
-
-                var element = myTab.rows.item(row).cells[c];
-                if (element.childNodes[0].getAttribute('type') == 'text') {
-                    values.push("'" + element.childNodes[0].value + "'");
-                }
-            }
-        }
-        
-        // SHOW THE RESULT IN THE CONSOLE WINDOW.
-        console.log(values);
-    }
-
     
+    document.getElementById("saveall").style.display = "none";
+    console.log(values);
+}
+
+function submitRow(event){
+    event.style.display = "none";
+    // TODO: maybe pass the change of that row only?
+    // currently the Edit button calls the "submit()" function
+    // which is submitting everything
+
+    var myTab = document.getElementById('empTable');
+    var values = new Array();
+
+    for (c = 0; c < myTab.rows[event.id].cells.length; c++) {   // EACH CELL IN A ROW.
+
+        var element = myTab.rows.item(event.id).cells[c];
+        if (element.childNodes[0].getAttribute('type') == 'text') {
+            values.push("'" + element.childNodes[0].value + "'");
+        }
+    }
+
+    console.log(values);
+
+}

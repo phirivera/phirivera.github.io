@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Muli|Rubik&display=swap" rel="stylesheet"> 
     </head>
 
-    <body>
+    <body onload="createTable()">
         <div id="overlay"></div>
         <div>
             <button class="element" id="logout-button">Logout</button>
@@ -19,69 +19,16 @@
         <br>
         <br>
         <br>
-        <div id="addprod-modal">
-            <p class="modal-close" onClick="hide_modal(this)">X</p>
-            <p class="modal-title">Add Product</p>
-            <form action="/add_product.php">
-                
-                
-                <br>
-                <label for="pname">Product Name</label>
-                <br>
-                <input class="depress" type="text" id="pname" name="pname"><br><br>
-                <label for="pprice">Price</label>
-                <br>
-                <input class="depress" type="text" id="pprice" name="pprice"><br><br>
-                <label for="uom">Unit of Measurement</label>
-                    <input class="depress" type="text" list="uom" id="puom" name="puom"/>
-                    <datalist id="uom">
-                    <option>kg</option>
-                    <option>pack</option>
-                    <option>piece</option>
-                    </datalist>
-                <br>
-                <br>
-                <br>
-                <input class="element bulge" type="submit" value="Submit">
-              </form> 
-
-        </div>
-
-        <div id="editprod-modal">
-            <p class="modal-close" onClick="hide_modal(this)">X</p>
-            <p class="modal-title">Edit Product</p>
-            <form action="/edit_product.php">
-
-                
-                <br>
-                <label for="pname">Product Name</label>
-                <br>
-                <input class="depress" type="text" id="pname" name="pname"><br><br>
-                <label for="pprice">Price</label>
-                <br>
-                <input class="depress" type="text" id="pprice" name="pprice"><br><br>
-                <label for="uom">Unit of Measurement</label>
-                    <input class="depress" type="text" list="uom" id="puom" name="puom"/>
-                    <datalist id="uom">
-                    <option>kg</option>
-                    <option>pack</option>
-                    <option>piece</option>
-                    </datalist>
-                <br>
-                <br>
-                <br>
-                <input class="element bulge" type="submit" value="Submit">
-            </form> 
-
-        </div>
 
         <div id="prodman">
             <h2 class="admin-h2">Products</h2>
-            <!-- <button class="element simple-button" id="addprod-button">Add Product</button> -->
             <button class="element simple-button" id="addprod-button" onclick="addRow()">Add Product</button>
+            <input type="button" id="saveall" value="Save All Changes" onclick="submit()"/>
             <br>
+            <br>
+            <div id="cont"></div>
 
-            <table id="prod-table" style="width:80%">
+            <!-- <table id="prod-table" style="width:80%">
                 <tr class="element depress">
                 <th>Product Name</th>
                 <th>Price</th>
@@ -97,8 +44,12 @@
                     <button class="element simple-button prod-delete">Delete</button>
                 </td>
                 </tr>
-            </table>     
+            </table>      -->
+            <br>
+            <br>
+            
         </div>
+        
         <script src="scripthead.js"></script>
     </body>
 </html>
