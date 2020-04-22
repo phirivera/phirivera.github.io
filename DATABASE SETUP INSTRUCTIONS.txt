@@ -1,0 +1,55 @@
+localhost/phpmyadmin
+
+1. On the left menu, click "New"
+
+2. In the "Database name" field, enter "teraokaf_main"
+For the dropdown, select "utf8mb4_general_ci" and click "Create" button
+
+3. Click on "SQL" on the top menu
+
+4. Copy and paste the below query and click "Go" and then "OK"
+
+CREATE TABLE `teraokaf_main`.`uom` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `modified_on` TIMESTAMP on update 	CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+
+5. Click on "uom" on the left menu under "teraokaf_main" and the click "SQL" on the top menu
+
+6. Delete the default contents of the SQL query input. Copy and paste the below query and click "Go"
+
+INSERT INTO uom (name) VALUES ("pack"), ("pc"), ("kg");
+
+7. Click on "uom" on the left menu under "teraokaf_main". You should be able to see the three entries inserted.
+
+8. Click on "teraokaf_main" on the left menu and then click on "SQL" on the top menu. Copy and paste the below query and click "Go" and then "OK"
+
+CREATE TABLE `teraokaf_main`.`categories` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `codepoint` VARCHAR(255) NOT NULL , `modified_on` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+
+9. Click on "categories" on the left menu under "teraokaf_main" and the click "SQL" on the top menu. Delete the default contents of the SQL query input. Copy and paste the below query and click "Go"
+
+INSERT INTO categories (name,codepoint) VALUES ("Leafy Greens","&#x1F96C"),("Fruiting Crops","&#x1F331"),("Fruits","&#x1F353"),("Root Crops","&#x1F954");
+
+10. Click on "teraokaf_main" on the left menu and then click on "SQL" on the top menu. Copy and paste the below query and click "Go" and then "OK"
+
+CREATE TABLE `teraokaf_main`.`products` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `price` INT NOT NULL , `uom_id` INT NULL , `category_id` INT NULL , `updated_on` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+
+11. Click on "products" on the left menu under "teraokaf_main" and the click "SQL" on the top menu. Delete the default contents of the SQL query input. Copy and paste the below query and click "Go"
+
+ALTER TABLE `products` ADD CONSTRAINT `product_uom` FOREIGN KEY (`uom_id`) REFERENCES `uom`(`id`) ON DELETE SET NULL ON UPDATE CASCADE; ALTER TABLE `products` ADD CONSTRAINT `product_category` FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+12. Click on "products" on the left menu under "teraokaf_main" and the click "SQL" on the top menu. Delete the default contents of the SQL query input. Copy and paste the below query and click "Go"
+
+INSERT INTO products(name,uom_id,category_id,price) VALUES
+("Alugbati",1,1,50),("Ampalaya",3,2,140),("Assorted Cherry Tomatoes",1,2,180),("Banana Lakatan",3,3,100),("Banana Latundan",3,3,80),("Banana Saba",3,3,70),("Beetroot",3,4,200),("Broccoli",3,2,250),("Cabbage Green",3,1,120),("Camote Tops",1,1,50),("Carrots",3,4,180),("Cauliflower",3,2,250),("Celery",3,1,200),("Chayote",3,2,70),("Cherry Tomatoes",1,2,120),("Chicharo",3,2,350),("Curly Lale",1,1,100),("Eggplant Regular",3,2,100),("Fairytale Eggplant",3,2,120),("French Beans",3,2,250),("Ginger",3,4,280),("Green Ice Lettuce",1,1,50),("Guyabano",3,3,150),("Honeydew",3,3,150),("Kangkong",1,1,50),("Lemon",3,3,280),("Lollo Rossa Lettuce",1,1,50),("Mango",3,3,200),("Marbled Potato",3,4,120),("Melon",3,3,100),("Mini Squash",3,4,60),("Native Lime",3,3,200),("Native Squash",3,4,80),("Native Tomato L",3,2,100),("Native Tomato S/M",3,2,80),("Onion Leeks",1,1,70),("Patola",3,2,120),("Potato",3,4,120),("Purple Cabbage",3,1,350),("Red Lady Papaya",3,3,80),("Red Radish",3,4,350),("Regular Cucumbers",3,2,120),("Romaine Lettuce",1,1,50),("Saluyot",1,1,50),("Sayote Tops",1,1,50),("Sigarilya",3,2,250),("Singkamas",3,4,120),("Spring Onion",1,1,50),("Squash Tops",1,1,50),("Strawberries",1,3,150),("Sweet Corn",3,2,110),("Sweet Potato Orange",3,4,120),("Sweet Potato Purple",3,4,120),("Turmeric",3,4,160),("Tuscan Kale",1,1,100),("Upo",2,2,50),("White Corn",3,2,110),("White Radish",3,4,120),("Wild Arugula",1,1,120);
+
+13. Click on "teraokaf_main" on the left menu and then click on "SQL" on the top menu. Copy and paste the below query and click "Go" and then "OK"
+
+CREATE TABLE `teraokaf_main`.`accounts` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `username` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+14. In your browser go to:  http://localhost/tera/insertuser.php  --> this will insert the user accounts for the database. 
+
+Afterwards you should be able to login to Tera admin/head... Your login details are:
+	username="sophia" password="1234"
+	
+
+
+
+

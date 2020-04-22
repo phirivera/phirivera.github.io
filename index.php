@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+// This PHP code checks if there is a user that is logged in. If yes, page is automatically redirected
+// to the head page.
+if(isset($_SESSION['username'])){
+    header('Location: head.php');
+}
+
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -19,94 +31,90 @@
         <meta name="author" content="Sophia Therese Rivera">
         <link rel="stylesheet" type="text/css" href="style.css">
         
-        <link href="https://fonts.googleapis.com/css?family=Muli|Rubik&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Muli|Rubik&display=swap" rel="stylesheet">
+
     </head>
 
     <body>
     
-    <?php
+        <!--This PHP code accesses the database so that it can insert a record into the "page_load"
+        table of the database. No parameters/values are passed since structure of page_load contains
+        ID and timestamp which are both server-generated upon insert. -->
 
-            $servername = "localhost";
-            $username = "teraokaf_luigi";
-            $password = "luigitutaan";
-            $dbname = "teraokaf_main";
+        <?php
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+                include('dbconfig.php');
 
-            $sql = 'INSERT INTO page_load() VALUES ();';
+                $sql = 'INSERT INTO page_load() VALUES ();';
 
-            $result = $conn->query($sql);
+                $result = $conn->query($sql);
 
-            $conn->close();
+        ?>
 
-            ?>
-        <!-- <div id="overlay"></div> -->
         <div id="topbar">
-            <!-- <img src="images/logo.png" alt="" id="logo"> -->
             <a href="#splash">
                     <img src="images/logo.png" alt="" id="logo">
                     <img src="images/chicken_waving.png" alt id="chicken">
             </a>
-            
-            
-
             <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
                     <button class="order-button" type="button">🛒 Order</button>
             </a>
-
             <button class="element" id="login-button" type="button">Login</button>
         </div>
+
         <br>
+
         <button class="element bulge" id="login-button">Login</button>
+        
         <p id="jap-banner">こんにちは~</p>
 
         <div id="login-modal" class="element">
             <div id="drawer-button" class="element modal-close" onClick="hideModal(this)">
-                <!-- <p class="modal-close" onClick="hideModal(this)">X</p> -->
                 <p id="close-copy">x</p>
             </div>
+            
             <br>
             <br>   
-            <p class="modal-title">Add Product</p>    
+            
+            <p class="modal-title">Log In</p>    
+            
             <br>
             
-            <form action="/authenticate.php" method="POST">
+            <form action="authenticate.php" method="POST">
                 <label for="username">
 					<i class="fas fa-user"></i>
 				</label>
-				<input class="depress" type="text" name="username" placeholder="Username" id="username" required>
+				
+                <input class="depress" type="text" name="username" placeholder="Username" id="username" required>
                 
                 <br>
                 <br>
+               
                 <label for="password">
 					<i class="fas fa-lock"></i>
 				</label>
+                
                 <input class="depress" type="password" name="password" placeholder="Password" id="password" required>
+                
                 <br>
                 <br>
+                
                 <input class="element bulge" type="submit" value="Login">
               </form> 
 
         </div>
 
         <div id="popper">
+            <p id="close">X</p>
             
-            <p id="close">
-                X
-            </p>
             <br>
+            
             <p id="pop-text">
-                In cooperation with social distancing, we only allow payments via online bank transfer through BPI and BDO. Orders via this website <b>will be prioritized. </b> We're running on a skeletal workforce, so please bear with us. We’ll try our very best to reply as soon as possible.
+            In cooperation with social distancing, we only allow payments via online bank transfer through BPI and BDO. Orders via this website <b>will be prioritized. </b> We're running on a skeletal workforce, so please bear with us. We’ll try our very best to reply as soon as possible.
             </p>
         </div>
 
         <div class="section" id="splash">
-            
             <h1>Need veggies?</h1>
             <h1 id="gotcha">We gotcha!</h1>
             <p id="main-desc">A family-owned farm in Pangasinan, Philippines, offering quality 100% organic produce.
@@ -143,42 +151,31 @@
             <h2>Take a look at our produce</h2>
             <p>(Prices are subjected to change without prior notice)</p>
             <div class="element bulge outer-button">
-                <button id="all" class="element tab" type="button">🥗 All</button>
+                <button id="all" class="element tab" type="button">&#x1F957 All</button>
             </div>
-            
+
+            <!-- This PHP code connects to the database to get the list of categories for display of
+            category buttons. -->
             <?php
 
-            $servername = "localhost";
-            $username = "teraokaf_luigi";
-            $password = "luigitutaan";
-            $dbname = "teraokaf_main";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            require_once('dbconfig.php');
 
             $sql = 'SELECT * FROM categories';
 
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    $name = $row["name"]; // "Leafy Greens"
-                    $nameForClass = str_replace(' ', '-', strtolower($name)); // "leafy-greens"
-                    $emoji = $row["emoji"];
-                    $codepoint = $row["codepoint"];
+                    $name = $row["name"]; // $row["name"] will return the name of the category. Sample is: "Leafy Greens"
+                    $nameForClass = str_replace(' ', '-', strtolower($name)); // HTML class of button needs to be in the form "leafy-greens" thus this line modifies the category name to do such.
+                    $codepoint = $row["codepoint"]; // $row["codepoint"] will return the codepoint (a hexadecimal-like number) of the emoji of the category. Sample is: "&#x1F96C" 
 
                     echo '<div class="element bulge outer-button"> <button id="' . $nameForClass . '" class="element tab" type="button"> <p>' . $codepoint . '</p>' . ' ' . $name . '</button></div>' ;
                 }
             } else {
                 echo "0 results";
             }
-            $conn->close();
-
+            
             ?>
 
             <script src="script.js"></script>
@@ -186,19 +183,11 @@
             <br>
             <div class="element bulge" id="stage-cards">
 
+            <!-- This PHP code connects to the database to get the list of products for display of
+            product cards. -->
             <?php
 
-            $servername = "localhost";
-            $username = "teraokaf_luigi";
-            $password = "luigitutaan";
-            $dbname = "teraokaf_main";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            require_once('dbconfig.php');
 
             $sql = 'SELECT p.name AS name, u.name AS uom, c.name AS category, p.price FROM products p INNER JOIN categories c ON c.id=p.category_id INNER JOIN uom u ON u.id=p.uom_id';
 
@@ -219,7 +208,7 @@
             } else {
                 echo "0 results";
             }
-            $conn->close();
+            
 
             ?>
 

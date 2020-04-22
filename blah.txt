@@ -1,0 +1,7 @@
+<tr>
+    <td> <input type="button" value="Remove" onclick="removeRow(this)" style="font-size: 0.7em;"> <input type="button" value="Save" style="background-color: rgb(184, 200, 0); font-size: 0.7em; display: none;" onclick="submitRow(this)" id="2"> </td>
+    <td><input type="text" value="" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
+    <td><input type="text" value="" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
+    <td><input type="text" value="" id="puom" list="uom" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
+    <td><input type="text" value="" id="category" list="catlist" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
+</tr>
