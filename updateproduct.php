@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     include('dbconfig.php');
 
     $product_id = $_GET["productid"];
@@ -67,11 +69,12 @@
         }
 
         // Update DB
-
+        
+        $_SESSION["toast"] = $product_name;
         $sql_for_update_product = 'UPDATE products SET name="' . $product_name . '", price=' . $product_price . ', uom_id=' . $uom_id . ', category_id=' . $category_id . ' WHERE id=' . $product_id;
         $result = $conn->query($sql_for_update_product);
 
-        echo 'window.location.replace("http://www.w3schools.com");';
+        
 
     } else {
         // Product ID not found in DB or more than 1 Product ID in DB

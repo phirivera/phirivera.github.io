@@ -262,8 +262,8 @@ function rowSaveButtonClicked(event){ // event points to clicked Save button in 
 
     updateDatabase(values);
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-document.getElementById("updated-toast").style.display = 'flex';    
-document.getElementById("updated-toast").style.opacity = 1;
+//document.getElementById("updated-toast").style.display = 'flex';    
+//document.getElementById("updated-toast").style.opacity = 1;
     
 }
 
@@ -286,7 +286,7 @@ function updateDatabase(values){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //document.getElementById("txtHint").innerHTML = this.responseText;
-            location.reload();
+            location.reload(); // IS IT THIS ONE?
         }
     };
     

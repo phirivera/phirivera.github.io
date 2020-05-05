@@ -8,6 +8,8 @@
         header('Location: index.php');
     }
 
+    
+
     include('dbconfig.php')
 ?>
 
@@ -245,6 +247,22 @@
         </div>
         
         <script src="scripthead.js"></script>
+
+        <?php
+            if(isset($_SESSION['toast'])){
+                echo '<script> 
+                
+                document.getElementById("updated-toast").innerHTML = "<p>Product \"' . $_SESSION["toast"] . '\" was updated successfully. </p><div>Okay</div>";
+                document.getElementById("updated-toast").style.display = \'flex\';    
+                document.getElementById("updated-toast").style.opacity = 1;
+                
+                </script>';
+                $_SESSION['toast'] = null;
+            } else {
+                echo 'wala';
+            }
+
+        ?>
     </body>
 </html>
 
