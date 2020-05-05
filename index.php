@@ -63,8 +63,6 @@ if(isset($_SESSION['username'])){
         </div>
 
         <br>
-
-        <button class="element bulge" id="login-button">Login</button>
         
         <p id="jap-banner">こんにちは~</p>
 
@@ -151,7 +149,7 @@ if(isset($_SESSION['username'])){
             <h2>Take a look at our produce</h2>
             <p>(Prices are subjected to change without prior notice)</p>
             <div class="element bulge outer-button">
-                <button id="all" class="element tab" type="button">&#x1F957 All</button>
+                <button id="all" onclick="filter_clicked(this)" class="element tab category-filter-button" type="button">&#x1F957 All</button>
             </div>
 
             <!-- This PHP code connects to the database to get the list of categories for display of
@@ -160,7 +158,7 @@ if(isset($_SESSION['username'])){
 
             require_once('dbconfig.php');
 
-            $sql = 'SELECT * FROM categories';
+            $sql = 'SELECT p.name, c.name, c.codepoint FROM products p INNER JOIN categories c ON p.category_id=c.id GROUP BY c.name ORDER BY c.name ';
 
             $result = $conn->query($sql);
 
@@ -170,7 +168,7 @@ if(isset($_SESSION['username'])){
                     $nameForClass = str_replace(' ', '-', strtolower($name)); // HTML class of button needs to be in the form "leafy-greens" thus this line modifies the category name to do such.
                     $codepoint = $row["codepoint"]; // $row["codepoint"] will return the codepoint (a hexadecimal-like number) of the emoji of the category. Sample is: "&#x1F96C" 
 
-                    echo '<div class="element bulge outer-button"> <button id="' . $nameForClass . '" class="element tab" type="button"> <p>' . $codepoint . '</p>' . ' ' . $name . '</button></div>' ;
+                    echo '<div class="element bulge outer-button"> <button onclick="filter_clicked(this)" id="' . $nameForClass . '" class="element tab category-filter-button" type="button"> <p>' . $codepoint . '</p>' . ' ' . $name . '</button></div>' ;
                 }
             } else {
                 echo "0 results";
@@ -189,7 +187,7 @@ if(isset($_SESSION['username'])){
 
             require_once('dbconfig.php');
 
-            $sql = 'SELECT p.name AS name, u.name AS uom, c.name AS category, p.price FROM products p INNER JOIN categories c ON c.id=p.category_id INNER JOIN uom u ON u.id=p.uom_id';
+            $sql = 'SELECT p.name AS name, u.name AS uom, c.name AS category, p.price FROM products p INNER JOIN categories c ON c.id=p.category_id INNER JOIN uom u ON u.id=p.uom_id ORDER BY p.name ASC';
 
             $result = $conn->query($sql);
 

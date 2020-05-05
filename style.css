@@ -668,6 +668,26 @@ input[type=text], input[type=password]{
 
 }
 
+#add-product-modal{
+  display: none;
+  float: right;
+  right: 0;
+  top: 0;
+  width: 15em;
+  height: 100%;
+  z-index: 12;
+  position: fixed;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  border-radius: 10px;
+
+  /* background-color: white; */
+  box-shadow: 0px 4px 100px #C9B9AA;
+
+}
+
 #drawer-button{
   border-radius: 100%;
   margin-left: -80px;

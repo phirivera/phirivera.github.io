@@ -1,3 +1,24 @@
+document.getElementById('add-product-modal').style.display = "none";
+
+document.getElementById('addprod-button').onclick = showDrawer;
+
+document.getElementsByClassName('modal-close').onclick = hideModal;
+// document.getElementById('overlay').onclick = hideModal;
+
+function showDrawer(event){
+    var mod = document.getElementById("add-product-modal");
+    mod.style.display = "block";
+    mod.classList.add("element");
+
+}
+
+//gets the parent (modal) of the close button
+function hideModal(event){
+    // document.getElementById("overlay").style.display="none";
+    event.parentNode.style.display = 'none';
+    document.getElementById("add-product-modal").style.display = "none";
+}
+
 
 var table = document.createElement("TABLE");
 table.id = "tblCopy";
@@ -10,7 +31,7 @@ arrHead = ['Actions', 'Name', 'Price', 'UOM', 'Category'];
 
 function saveDeets(event){
     var appearEdit = event.parentNode.parentNode.rowIndex;       // TEXTFIELD -> TD -> TR.
-    document.getElementById(appearEdit).style.display = "inline-block";
+    document.getElementById(appearEdit.id).style.display = "inline-block";
     document.getElementById("saveall").style.display = "inline-block";
 }
 
@@ -123,15 +144,9 @@ function addRow() {
 
 //function: confirmation to delete
 function confirmRemove(event){
-
-
 }
 
-//Function: to delete a row
-function removeRow(oButton) {
-    var empTab = document.getElementById('empTable');
-    empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
-}
+
 
 function showSaveButton(event){ // event is input text element
     //console.log("Inside showSaveButton");
@@ -145,14 +160,19 @@ function toggleDisplay(id) {
     if (el && el.style) {
       el.style.display = '';
     } 
-  }
+}
 
 /*
 // Submit table data to console
 function submit() {
     //TODO: remove the save buttons if the main save button is pressed
     var myTab = document.getElementById('empTable');
-    var values = new Array();
+    var values = new A
+    
+    
+    
+    
+    rray();
 
     // LOOP THROUGH EACH ROW OF THE TABLE.
     for (row = 1; row < myTab.rows.length; row++) {
@@ -170,49 +190,135 @@ function submit() {
 }
 */
 
+//Function: to delete a row
+function removeRow(event) {
+    var id = event.id;
+    id = id.split("_")[3];
+
+    deleteProductFromDatabase(id);
+}
+
+function deleteProductFromDatabase(id){
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //document.getElementById("txtHint").innerHTML = this.responseText;
+            location.reload();
+        }
+    };
+    
+    xmlhttp.open("GET","deleteproduct.php?productid=" + id, true);
+    xmlhttp.send();
+
+}
 
 function rowSaveButtonClicked(event){ // event points to clicked Save button in row
 
-    var table_row = event.parentNode.parentNode; // points to the TR
+    var table_row = event.parentNode.parentNode;
 
-    var myTab = document.getElementById('empTable');
+    var myTab = document.getElementById("empTable");
+    var values = new Array();
+
+    var save_button_id = event.id; //save_button_id_n
+
+    //getting the product id 
+    save_button_id= save_button_id.split("_")[3];
+    values.push(save_button_id);
+
+    var currTd = event.parentNode;
+
+    //loop to get into td siblings
+
+    console.log("currTd before the for loop :  " + currTd);
+
+    for ( var i = 1; i< myTab.rows[1].cells.length; i++){
+
+        currTd = currTd.nextElementSibling;
+        //console.log("currTd.childNodes[1].value  :  " + currTd.childNodes[1].value);   
+        values.push(currTd.childNodes[1].value);
+        
+    }
+
+    updateDatabase(values);
+    
+}
+
+function updateDatabase(values){
+
+    var product_id = values[0];
+    var product_name = values[1];
+    var product_price = values[2];
+    var product_uom = values[3];
+    var product_category = values[4];
+
+    var extensions = "?productid=" + product_id + "&productname=" + product_name + "&productprice=" + product_price + "&productuom=" + product_uom + "&productcategory=" + product_category;
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //document.getElementById("txtHint").innerHTML = this.responseText;
+            location.reload();
+        }
+    };
+    
+    xmlhttp.open("GET","updateproduct.php" + extensions, true);
+    xmlhttp.send();
+
+}
+
+
+    /*
+
+    ***
+    if (currTd.childNodes[0].getAttribute["type"] == "text"){
+        values.push("'" + currTd.childNodes[1].value + "'");
+        }
+    ***
     var values = new Array();
 
     var save_button_id = event.id;
+    console.log("1: " + save_button_id);
 
-    save_button_id = save_button_id.substr(save_button_id.length-1); // This one works!
+    save_button_id = save_button_id.split("_"); // This one works!
+    console.log("2: " + save_button_id);
+
+    save_button_id = save_button_id[save_button_id.length-1];
+    console.log("3: " + save_button_id);
 
     values.push(save_button_id);
 
-    for (c = 0; c < myTab.rows[save_button_id].cells.length; c++) {   // EACH CELL IN A ROW.
+    console.log("mytab.rows.length = " + myTab.rows.length);
+
+    var involvedRow = myTab.rows.namedItem("prod_db_id_" + save_button_id);
+    console.log("involvedRow.cells.length  :  " + involvedRow.cells.length);
+
+    for(var i = 0 ; i < involvedRow.cells.length; i++){
+        console.log("involvedRow.cells.item(i).value  :  " + involvedRow.cells.item(i));
+    }
+
+    */
+
+    /*
+    for (c = 0; c < myTab.rows.length; c++) {   // EACH CELL IN A ROW.
 
         var element = myTab.rows.item(save_button_id).cells[c];
 
-        // console.log("element.childNodes[0].value = " + element.childNodes[1].value);
         values.push(element.childNodes[1].value);
-        
-        
-    }
 
-    console.log(values);
-    
-    /*
-    var myTab = document.getElementById('empTable');
-    var values = new Array();
-
-    var save_button_id = event.id;
-
-    console.log(save_button_id);
-    for (c = 0; c < myTab.rows[save_button_id.substr(save_button_id.length-1)].cells.length; c++) {   // EACH CELL IN A ROW.
-
-        var element = myTab.rows.item(event.id).cells[c];
-        if (element.childNodes[0].getAttribute('type') == 'text') {
-            //values.push("'" + element.childNodes[0].value + "'");
-            values.push(element.childNodes[0].value);
-        }
     }
     */
-}
+    
 
 /*
 function submitRow(event){

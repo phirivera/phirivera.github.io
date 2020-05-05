@@ -2,19 +2,21 @@
 
     include('dbconfig.php');
 
-    $product_name = $_POST["name"];
-    $product_price = $_POST["price"];
-    $product_uom = strtolower($_POST["uom"]); // KG --> kg 
-    $product_category = ucwords($_POST["category"]);
+    $product_id = $_GET["productid"];
+    $product_name = $_GET["productname"];
+    $product_price = $_GET["productprice"];
+    $product_uom = $_GET["productuom"];
+    $product_category = $_GET["productcategory"];
 
-    $uom_id = null;
-    $category_id = null;
+    // Check if product ID exists in database
 
-    $sql_for_product_names = 'SELECT name FROM products WHERE name="' . $product_name . '"';
-    $result = $conn->query($sql_for_product_names);
+    $sql_for_check_prod_id_in_db = 'SELECT * FROM products WHERE id=' . $product_id;
+    $result = $conn->query($sql_for_check_prod_id_in_db);
 
-    if($result->num_rows==0){ // Product Name does not exist in DB
-        
+    if($result->num_rows==1){
+
+        // Check if UOM exists in DB
+
         $sql_for_uom = 'SELECT id FROM uom WHERE name="' . $product_uom . '"';
         $result = $conn->query($sql_for_uom);
 
@@ -40,6 +42,8 @@
 
         }
 
+        // Check if Category exists in DB
+
         $sql_for_category = 'SELECT id FROM categories WHERE name="' . $product_category . '"';
         $result = $conn->query($sql_for_category);
         
@@ -62,15 +66,18 @@
 
         }
 
-        // Insert into DB(name,price,uom_id,category_id)
+        // Update DB
 
-        $sql_for_insert_new_product = 'INSERT INTO products(name,price,uom_id,category_id) VALUES("' . $product_name . '",' . $product_price . ',' . $uom_id . ',' . $category_id . ')';
-        $result = $conn->query($sql_for_insert_new_product);
+        $sql_for_update_product = 'UPDATE products SET name="' . $product_name . '", price=' . $product_price . ', uom_id=' . $uom_id . ', category_id=' . $category_id . ' WHERE id=' . $product_id;
+        $result = $conn->query($sql_for_update_product);
 
-        header("Location: head.php");
+        echo 'window.location.replace("http://www.w3schools.com");';
+
     } else {
-        // ERROR: Product Name already exists in DB
+        // Product ID not found in DB or more than 1 Product ID in DB
     }
+    
+
 
 
 ?>

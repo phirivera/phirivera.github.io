@@ -1,7 +1,47 @@
-<tr>
-    <td> <input type="button" value="Remove" onclick="removeRow(this)" style="font-size: 0.7em;"> <input type="button" value="Save" style="background-color: rgb(184, 200, 0); font-size: 0.7em; display: none;" onclick="submitRow(this)" id="2"> </td>
-    <td><input type="text" value="" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
-    <td><input type="text" value="" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
-    <td><input type="text" value="" id="puom" list="uom" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
-    <td><input type="text" value="" id="category" list="catlist" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"> </td>
+HTML
+
+<tr id="prod_db_id_66">
+    <td>
+        <input type="button" value="Remove" onclick="removeRow(this)" style="font-size: 0.7em;">
+        <input type="button" id="save_button_id_66" value="Save" style="background-color: rgb(184, 200, 0); font-size: 0.7em;" onclick="rowSaveButtonClicked(this)">
+    </td>
+    <td>
+        <input type="text" value="Asus Laptop" oninput="toggleDisplay('save_button_id_66')">
+    </td>
+    <td>
+        <input type="text" value="15000" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
+    </td>
+    <td>
+        <input type="text" list="uom" id="puom" name="puom" value="pc" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
+            <datalist id="uom"><option>pack</option><option>pc</option><option>kg</option><option>piece</option></datalist>
+    </td>
+    <td>
+        <input type="text" value="electronics" id="category" list="catlist" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
+    </td>
+</tr>
+
+JS
+
+function rowSaveButtonClicked(event){
+    // What should I put here?
+}
+
+<tr id="prod_db_id_66">
+    <td>
+        <input type="button" value="Remove" onclick="removeRow(this)" style="font-size: 0.7em;">
+        <input type="button" id="save_button_id_66" value="Save" style="background-color: rgb(184, 200, 0); font-size: 0.7em;" onclick="rowSaveButtonClicked(this)">
+    </td>
+    <td>
+        <input type="text" value="Asus Laptop" oninput="toggleDisplay('save_button_id_66')">
+    </td>
+    <td>
+        <input type="text" value="15000" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
+    </td>
+    <td>
+        <input type="text" list="uom" id="puom" name="puom" value="pc" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
+            <datalist id="uom"><option>pack</option><option>pc</option><option>kg</option><option>piece</option></datalist>
+    </td>
+    <td>
+        <input type="text" value="electronics" id="category" list="catlist" onchange="saveDeets(this)" onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
+    </td>
 </tr>

@@ -1,3 +1,41 @@
+function filter_clicked(button){
+    // INSERT "ANALYTICS" HANDLING HERE
+    filterButtonsInactive();
+    button.classList.add("active");
+    var id = button.id;
+    showCards(button.id);
+}
+
+function filterButtonsInactive(){
+    var buttons = document.getElementsByClassName("category-filter-button");
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].classList.remove("active");
+    }
+}
+
+function showCards(category){
+    console.log("Inside showCards");
+    var cards = document.getElementsByClassName("card");
+
+    var empty = true;
+
+    if(category == "all"){
+        for(var i = 0; i < cards.length ; i++){
+            cards[i].style.display = "inline-block";
+        }
+    } else {
+        for(var i = 0; i < cards.length ; i++){
+            if(cards[i].className.includes(category)){
+                empty = false;
+                cards[i].style.display = "inline-block";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+
+}
+
 document.getElementById("all").className += " active"; 
 
 document.getElementById("logo").onmouseover = showChicken;
@@ -6,12 +44,13 @@ document.getElementById("logo").onmouseleave = hideChicken;
 document.getElementById("close").onclick = closePop; 
 document.getElementById("popper").onclick = closePop;
 
+/*
 document.getElementById("all").onclick = tab_click; 
 document.getElementById("leafy-greens").onclick = tab_click; 
 document.getElementById('fruits').onclick = tab_click; 
 document.getElementById('fruiting-crops').onclick = tab_click; 
 document.getElementById('root-crops').onclick = tab_click; 
-
+*/
 document.getElementById('login-button').onclick = showDrawer;
 
 document.getElementsByClassName('modal-close').onclick = hideModal;
@@ -84,9 +123,9 @@ function tab_click(clicked) {
     // Get all elements with class="tab" and remove the class "active"
     tablinks = document.getElementsByClassName("tab");
     for (i = 0; i < tablinks.length; i++) {
-        console.log(tablinks[i].id + " " + tablinks[i].classname);
+        //console.log(tablinks[i].id + " " + tablinks[i].classname);
         tablinks[i].className = tablinks[i].className.replace(" active", "");
-        console.log(tablinks[i].id + " " + tablinks[i].classname);
+        //console.log(tablinks[i].id + " " + tablinks[i].classname);
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
