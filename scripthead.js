@@ -1,5 +1,13 @@
 document.getElementById('add-product-modal').style.display = "none";
 
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// document.getElementById('add-toast').style.display = 'none';
+document.getElementById('updated-toast').style.display = 'none';
+// document.getElementById('deleted-toast').style.display = 'none';
+// document.getElementById('error-toast').style.display = 'none';
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
 document.getElementById('addprod-button').onclick = showDrawer;
 
 document.getElementsByClassName('modal-close').onclick = hideModal;
@@ -115,6 +123,10 @@ function addRow() {
             ele.setAttribute('onkeyup', 'this.onchange()');
             ele.setAttribute('onpaste', 'this.onchange()');
             ele.setAttribute('oninput', 'this.onchange()');
+            ele.setAttribute('onmouseover', 'focus();old = value;');
+            ele.setAttribute('onmousedown', "value = '';");
+            ele.setAttribute('onmouseup', "value = old;");
+
 
             td.appendChild(ele);
 
@@ -216,6 +228,9 @@ function deleteProductFromDatabase(id){
     xmlhttp.open("GET","deleteproduct.php?productid=" + id, true);
     xmlhttp.send();
 
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    // document.getElementById("deleted-toast").style.opacity = 1;
+
 }
 
 function rowSaveButtonClicked(event){ // event points to clicked Save button in row
@@ -246,6 +261,9 @@ function rowSaveButtonClicked(event){ // event points to clicked Save button in 
     }
 
     updateDatabase(values);
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+document.getElementById("updated-toast").style.display = 'flex';    
+document.getElementById("updated-toast").style.opacity = 1;
     
 }
 

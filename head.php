@@ -117,6 +117,26 @@
         <br>
         <br>
         <br>
+<!-- 
+        <div class="toast" id="add-toast"> 
+                    <p>Product "name" was added successfully!</p>
+                    <div>Okay</div>
+        </div> -->
+
+         <div class="toast" id="updated-toast"> 
+                    <p>Product "name" was updated successfully!</p>
+                    <div>Okay</div>
+        </div>
+<!--
+        <div class="toast" id="deleted-toast"> 
+                    <p>Product "name" was deleted successfully!</p>
+                    <div>Okay</div>
+        </div>
+
+        <div class="toast" id="error-toast"> 
+                    <p>Product "name" was deleted successfully!</p>
+                    <div>Okay</div>
+        </div> -->
 
         <div id="prodman">
             <h2 class="admin-h2">Products</h2>
@@ -141,9 +161,9 @@
 
                         
 
-                        $sql = 'SELECT p.id AS id, p.name AS name, u.name AS uom, c.name AS category, p.price FROM products p INNER JOIN categories c ON c.id=p.category_id INNER JOIN uom u ON u.id=p.uom_id ORDER BY p.name ASC';
+                        $sql_for_products = 'SELECT p.id AS id, p.name AS name, u.name AS uom, c.name AS category, p.price FROM products p INNER JOIN categories c ON c.id=p.category_id INNER JOIN uom u ON u.id=p.uom_id ORDER BY p.name ASC';
 
-                        $result = $conn->query($sql);
+                        $result = $conn->query($sql_for_products);
 
                         if ($result->num_rows > 0) {
                             // output data of each row

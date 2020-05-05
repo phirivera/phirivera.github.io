@@ -722,3 +722,66 @@ input[type=text], input[type=password]{
   width: 15em;
   height: max-content;
 }
+
+.toast{
+  width: 90%;
+  min-height: 50px;
+  max-height: max-content;
+  position: fixed;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Rubik, sans-serif;
+  bottom: 30;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  animation: disappear 8s normal forwards;
+}
+
+#add-toast{
+  background-color: #B8C800;
+}
+
+#updated-toast{
+  background-color: #A48989;
+}
+
+#deleted-toast{
+  background-color: #FCC7C7;
+}
+
+#error-toast{
+  background-color: #E58080;
+}
+
+.toast > p{
+  margin-left: 20px;
+}
+
+.toast > div{
+  margin-right: 20px;
+  height: max-content;
+  width: max-content;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #ffffff;
+  opacity: .5;
+  border-radius: 5px;
+  color: #000000;
+  font-size: .8em;
+}
+
+@keyframes disappear {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+    opacity: 0;
+	}
+}
