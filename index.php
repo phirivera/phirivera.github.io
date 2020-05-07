@@ -158,7 +158,23 @@ if(isset($_SESSION['username'])){
 
             require_once('dbconfig.php');
 
-            $sql = 'SELECT p.name, c.name, c.codepoint FROM products p INNER JOIN categories c ON p.category_id=c.id GROUP BY c.name ORDER BY c.name ';
+            $sql = 'SELECT p.name, c.name, c.codepoint, c.flag FROM products p INNER JOIN categories c ON p.category_id=c.id WHERE c.flag IS NULL GROUP BY c.name ORDER BY c.name';
+
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $name = $row["name"]; // $row["name"] will return the name of the category. Sample is: "Leafy Greens"
+                    $nameForClass = str_replace(' ', '-', strtolower($name)); // HTML class of button needs to be in the form "leafy-greens" thus this line modifies the category name to do such.
+                    $codepoint = $row["codepoint"]; // $row["codepoint"] will return the codepoint (a hexadecimal-like number) of the emoji of the category. Sample is: "&#x1F96C" 
+
+                    echo '<div class="element bulge outer-button"> <button onclick="filter_clicked(this)" id="' . $nameForClass . '" class="element tab category-filter-button" type="button"> <p>' . $codepoint . '</p>' . ' ' . $name . '</button></div>' ;
+                }
+            } else {
+                echo "0 results";
+            }
+
+            $sql = 'SELECT p.name, c.name, c.codepoint, c.flag FROM products p INNER JOIN categories c ON p.category_id=c.id WHERE c.flag IS NOT NULL GROUP BY c.name ORDER BY c.flag';
 
             $result = $conn->query($sql);
 
