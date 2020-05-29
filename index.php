@@ -242,7 +242,7 @@ if(isset($_SESSION['username'])){
                 <br>
                 <br>
                 <p>
-                    2. A text will be sent by our team to finalize your order and amount due. (Please give us 1 day lead time ➡️)
+                    2. A text will be sent by our team to finalize your order and amount due.
                     <br><br>
                     3. Pay via online bank transfer through: <br> 
                     <b>BPI</b> (Ray Raphael Teraoka Dacones; SA# 2259053911) 
