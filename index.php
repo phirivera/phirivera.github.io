@@ -36,6 +36,14 @@ if(isset($_SESSION['username'])){
     </head>
 
     <body>
+
+    <div id="redirect_modal" class="redirect_modal" style="display:none">
+            <p>You are being redirected to our <b>order form</b>...</p>
+            <p>If it is taking too long, click the link below:</p>
+            <p class="link"><b><a href="http://tinyurl.com/teraokafamilyfarm-orderform">http://tinyurl.com/teraokafamilyfarm-orderform</a></b></p>
+            <p onclick="closeRedirectModal()" class="close">CLOSE</p>
+            <br>
+        </div>
     
         <!--This PHP code accesses the database so that it can insert a record into the "page_load"
         table of the database. No parameters/values are passed since structure of page_load contains
@@ -56,8 +64,8 @@ if(isset($_SESSION['username'])){
                     <img src="images/logo.png" alt="" id="logo">
                     <img src="images/chicken_waving.png" alt id="chicken">
             </a>
-            <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
-                    <button class="order-button" type="button">🛒 Order</button>
+            <a href="http://tinyurl.com/teraokafamilyfarm-orderform">
+                    <button onClick="showRedirectModal()" class="order-button" type="button">🛒 Order</button>
             </a>
             <button class="element" id="login-button" type="button">Login</button>
         </div>
@@ -126,8 +134,8 @@ if(isset($_SESSION['username'])){
             <a href="#produce">
                 <button class="element" id="howto-button" type="button" style="margin-top: 1em;">Product List</button>
             </a>
-            <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
-                <button class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
+            <a href="http://tinyurl.com/teraokafamilyfarm-orderform">
+                <button onClick="showRedirectModal()" class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
             </a>
             <br>
             <br>
@@ -236,8 +244,8 @@ if(isset($_SESSION['username'])){
                 <p>
                     1. Click the button and fill out the form:
                 </p>
-                <a href="https://forms.gle/sj6SRLJ9EkHBzM8XA">
-                    <button class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
+                <a href="http://tinyurl.com/teraokafamilyfarm-orderform">
+                    <button onClick="showRedirectModal()" class="element" type="button" style="font-size: 1.2em; margin-top: 1em;">Order</button>
                 </a>
                 <br>
                 <br>

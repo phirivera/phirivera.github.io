@@ -36,6 +36,16 @@ function showCards(category){
 
 }
 
+function showRedirectModal(){
+    var x = document.getElementById("redirect_modal");
+    x.style.display = "block";
+}
+
+function closeRedirectModal(){
+    var x = document.getElementById("redirect_modal");
+    x.style.display = "none";
+}
+
 document.getElementById("all").className += " active"; 
 
 document.getElementById("logo").onmouseover = showChicken;

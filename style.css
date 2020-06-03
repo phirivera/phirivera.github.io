@@ -160,6 +160,45 @@ p{
     background-size: cover;
 }
 
+.redirect_modal {
+  background-color: #B8C800;
+  box-shadow: 9px 9px 16px #C9B9AA, -9px -9px 16px #EFEAE5;
+  border-radius: 10px;
+  width: 40%;
+  height: auto;
+  
+  top: 5%;
+
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.redirect_modal .close {
+  padding: 0;
+  font-size: 1vw;
+}
+
+.redirect_modal p {
+  text-align: center;
+  margin: 0;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 1.5vw;
+  font-family: Muli, sans-serif;
+}
+
+.redirect_modal .link {
+  padding-top: 0;
+}
+
+.redirect_modal a {
+  text-decoration: none;
+  color: #38554C;
+}
+
 #farm{
   background-image: url("images/farm.jpg");
 }
@@ -784,4 +823,47 @@ input[type=text], input[type=password]{
 	100% {
     opacity: 0;
 	}
+}
+
+/* Portrait (i.e. narrow viewport) */
+@media screen and (max-aspect-ratio: 1/1) {
+  .redirect_modal {
+    background-color: #B8C800;
+    box-shadow: 9px 9px 16px #C9B9AA, -9px -9px 16px #EFEAE5;
+    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    
+    top: 5%;
+  
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  .redirect_modal .close {
+    padding: 0;
+    font-size: 2vw;
+  }
+  
+  .redirect_modal p {
+    text-align: center;
+    margin: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 3vw;
+    font-family: Muli, sans-serif;
+  }
+  
+  .redirect_modal .link {
+    padding-top: 0;
+  }
+  
+  .redirect_modal a {
+    text-decoration: none;
+    color: #38554C;
+  }
+
 }
